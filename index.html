@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Michael Muñoz · Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;}
+body{background:#F4F1EB;color:#0E0E0F;font-family:'Archivo',sans-serif;overflow-x:hidden;}
+img{display:block;}
+a{color:inherit;text-decoration:none;}
+::selection{background:#FF4A1A;color:#fff;}
+input,textarea{font-family:'Archivo',sans-serif;}
+button{font-family:'Archivo',sans-serif;}
+
+[data-reveal]{opacity:0;transform:translateY(42px);transition:opacity .9s cubic-bezier(.16,.8,.24,1),transform .9s cubic-bezier(.16,.8,.24,1);}
+[data-parallax]{will-change:transform;}
+[data-parallax][data-reveal]{transition:opacity .9s cubic-bezier(.16,.8,.24,1);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes cue{0%{transform:translateY(0);opacity:.35;}50%{opacity:1;}100%{transform:translateY(11px);opacity:.35;}}
+@media(prefers-reduced-motion:reduce){
+  [data-reveal]{opacity:1!important;transform:none!important;}
+  [data-parallax]{transform:none!important;}
+  *{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}
+}
+
+.nav-desktop{display:flex;align-items:center;gap:clamp(15px,2.2vw,32px);}
+.nav-hamburger{display:none;align-items:center;justify-content:center;width:44px;height:44px;margin-right:-10px;border:none;background:transparent;color:inherit;cursor:pointer;}
+@media(max-width:960px){.nav-desktop{display:none!important;}.nav-hamburger{display:inline-flex!important;}}
+.nav-desktop a{white-space:nowrap;}
+@media(max-width:760px){.about-photo{order:-1!important;margin-bottom:32px!important;}}
+
+.lang-btn{cursor:pointer;border:none;font-family:'Archivo';font-size:12px;font-weight:800;letter-spacing:.08em;padding:7px 12px;line-height:1;background:transparent;color:inherit;opacity:.7;transition:background .2s,color .2s,opacity .2s;}
+.lang-btn.active{background:#FF4A1A;color:#fff;opacity:1;}
+
+.contact-input{background:#0E0E0F;border:1px solid #2E2E2E;border-radius:8px;padding:14px 15px;color:#F4F1EB;font-size:16px;font-weight:500;outline:none;width:100%;transition:border-color .2s;}
+.contact-input:focus{border-color:#FF4A1A;}
+.social-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #2E2E2E;border-radius:50%;color:#CFCABF;transition:border-color .2s,color .2s;}
+.social-icon:hover{border-color:#FF4A1A;color:#FF4A1A;}
+
+.carousel-wrap{position:relative;overflow:hidden;}
+.carousel-track{display:flex;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1);}
+.carousel-slide{flex:0 0 100%;height:100%;overflow:hidden;}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+.carousel-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2;}
+.carousel-dot{width:6px;height:6px;border-radius:50%;border:none;cursor:pointer;transition:background .2s,transform .2s;}
+.carousel-dot.active{transform:scale(1.35);}
+
+.logos-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+@media(max-width:700px){.logos-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:450px){.logos-grid{grid-template-columns:repeat(2,1fr);}}
+
+.tag{border:1px solid #D8D3C8;border-radius:6px;padding:7px 12px;font-size:12px;font-weight:600;color:#4A463F;}
+.pill{border:1px solid #D8D3C8;border-radius:100px;padding:7px 15px;font-size:13px;font-weight:600;color:#3A372F;}
+.pill-white{border:1px solid #D8D3C8;border-radius:100px;padding:7px 14px;font-size:13px;font-weight:600;color:#3A372F;background:#fff;}
+</style>
+</head>
+<body>
+<div id="top" style="position:relative;background:#F4F1EB;">
+
+<!-- NAV -->
+<nav id="main-nav" style="position:fixed;top:0;left:0;width:100%;z-index:200;border-bottom:1px solid transparent;transition:background .35s,backdrop-filter .35s,border-color .35s;color:#0E0E0F;">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px clamp(20px,4vw,64px);">
+    <a href="#top" onclick="closeMenu()" style="display:flex;align-items:center;gap:11px;">
+      <span style="font-family:'Anton';font-size:23px;letter-spacing:.01em;line-height:1;">MM</span>
+      <span style="font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.85;">Michael Muñoz</span>
+    </a>
+    <div class="nav-desktop">
+      <a href="#trabajo" data-t="nav_work" style="font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;"></a>
+      <a href="#comware" style="font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;">ComWare</a>
+      <a href="#carab" data-t="nav_bside" style="font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;"></a>
+      <a href="#stack" style="font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;">Stack</a>
+      <a href="#formacion" data-t="nav_edu" style="font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;"></a>
+      <a href="#contacto" data-t="nav_contact" style="font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;"></a>
+      <a href="https://www.linkedin.com/in/michaelcwd" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;color:inherit;"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+      <div role="group" aria-label="Idioma" style="display:inline-flex;align-items:center;border:1.5px solid currentColor;border-radius:100px;overflow:hidden;">
+        <button class="lang-btn active" id="btn-es" onclick="setLang('es')" aria-label="Español">ES</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-label="English">EN</button>
+      </div>
+    </div>
+    <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menú">
+      <svg id="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display:none;"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      <svg id="icon-menu" width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" style="display:none;background:rgba(244,241,235,.98);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid #DDD8CD;padding:8px clamp(20px,4vw,64px) 26px;flex-direction:column;">
+    <a href="#trabajo" onclick="closeMenu()" data-t="nav_work" style="font-family:'Anton';font-size:26px;letter-spacing:.01em;padding:14px 0;border-bottom:1px solid #E2DDD2;display:block;"></a>
+    <a href="#comware" onclick="closeMenu()" style="font-family:'Anton';font-size:26px;letter-spacing:.01em;padding:14px 0;border-bottom:1px solid #E2DDD2;display:block;">ComWare</a>
+    <a href="#carab" onclick="closeMenu()" data-t="nav_bside" style="font-family:'Anton';font-size:26px;letter-spacing:.01em;padding:14px 0;border-bottom:1px solid #E2DDD2;display:block;"></a>
+    <a href="#stack" onclick="closeMenu()" style="font-family:'Anton';font-size:26px;letter-spacing:.01em;padding:14px 0;border-bottom:1px solid #E2DDD2;display:block;">Stack</a>
+    <a href="#formacion" onclick="closeMenu()" data-t="nav_edu" style="font-family:'Anton';font-size:26px;letter-spacing:.01em;padding:14px 0;border-bottom:1px solid #E2DDD2;display:block;"></a>
+    <a href="#contacto" onclick="closeMenu()" data-t="nav_contact" style="font-family:'Anton';font-size:26px;letter-spacing:.01em;padding:14px 0;border-bottom:1px solid #E2DDD2;display:block;"></a>
+    <div style="display:flex;align-items:center;gap:16px;margin-top:22px;">
+      <a href="https://www.linkedin.com/in/michaelcwd" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#0E0E0F;"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+      <div role="group" aria-label="Idioma" style="display:inline-flex;align-items:center;border:1.5px solid #0E0E0F;border-radius:100px;overflow:hidden;color:#0E0E0F;">
+        <button class="lang-btn active" id="btn-es-m" onclick="setLang('es')" aria-label="Español">ES</button>
+        <button class="lang-btn" id="btn-en-m" onclick="setLang('en')" aria-label="English">EN</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(98px,13vh,150px) clamp(20px,4vw,64px) 44px;overflow:hidden;">
+  <div data-parallax data-speed="58" data-t="hero_backdrop" style="position:absolute;left:0;bottom:2.5vw;width:100%;text-align:center;font-family:'Anton';font-weight:400;font-size:clamp(52px,13vw,240px);line-height:.8;color:#EBE6DC;letter-spacing:.01em;pointer-events:none;z-index:0;white-space:nowrap;"></div>
+  <div style="position:relative;z-index:2;display:flex;align-items:center;gap:11px;animation:fadeIn 1s ease both;">
+    <span style="width:9px;height:9px;border-radius:50%;background:#FF4A1A;display:inline-block;"></span>
+    <span style="font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;" data-t="hero_label"></span>
+  </div>
+  <div style="position:relative;z-index:2;">
+    <h1 data-parallax data-speed="-24" style="font-family:'Anton';font-weight:400;font-size:clamp(62px,17.5vw,292px);line-height:1.02;letter-spacing:-.02em;color:#0E0E0F;">
+      <span style="display:block;animation:fadeUp 1s cubic-bezier(.16,.8,.24,1) .05s both;">MICHAEL</span>
+      <span style="display:block;animation:fadeUp 1s cubic-bezier(.16,.8,.24,1) .16s both;">MUÑOZ</span>
+    </h1>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:20px;animation:fadeUp 1s ease .3s both;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z" stroke="#FF4A1A" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.3" fill="#FF4A1A"/></svg>
+      <span style="font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;">Barcelona · Caracas</span>
+    </div>
+    <p id="hero-headline" style="max-width:700px;margin-top:18px;font-size:clamp(18px,2.1vw,27px);font-weight:600;line-height:1.32;color:#26241F;animation:fadeUp 1s ease .42s both;"></p>
+  </div>
+  <div style="position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;animation:fadeIn 1.2s ease .5s both;">
+    <a href="#sobre" style="display:flex;align-items:center;gap:13px;color:#0E0E0F;">
+      <span style="font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;" data-t="hero_scroll"></span>
+      <span style="display:inline-flex;width:34px;height:34px;border:1.5px solid #0E0E0F;border-radius:50%;align-items:center;justify-content:center;animation:cue 1.6s ease-in-out infinite;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M5 13l7 7 7-7" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+    </a>
+    <span style="font-size:13px;font-weight:600;letter-spacing:.04em;color:#7A766E;max-width:320px;text-align:right;line-height:1.45;" data-t="hero_tagline"></span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="sobre" style="position:relative;z-index:3;background:#F4F1EB;padding:clamp(70px,11vw,160px) clamp(20px,8vw,200px);scroll-margin-top:80px;">
+  <div style="display:flex;gap:clamp(34px,6vw,96px);flex-wrap:wrap;align-items:flex-start;">
+    <div style="flex:1 1 320px;min-width:260px;">
+      <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:30px;">
+        <span style="width:34px;height:2px;background:#FF4A1A;"></span>
+        <span style="font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#FF4A1A;" data-t="about_kicker"></span>
+      </div>
+      <p data-reveal style="font-family:'Archivo';font-size:clamp(24px,3.2vw,42px);font-weight:700;line-height:1.18;letter-spacing:-.01em;color:#15140F;" data-t="about_lead"></p>
+      <p data-reveal data-delay="120" style="margin-top:26px;font-size:clamp(15.5px,1.5vw,18px);line-height:1.65;color:#4A463F;max-width:560px;" data-t="about_body"></p>
+      <div data-reveal data-delay="200" style="margin-top:40px;font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#9A958B;margin-bottom:16px;" data-t="about_skills_kicker"></div>
+      <div id="skills-list" style="display:flex;flex-wrap:wrap;gap:9px;"></div>
+    </div>
+    <div data-reveal data-delay="150" class="about-photo" style="flex:0 1 300px;min-width:240px;">
+      <img src="Michael%20foto/1_Michael%20Mu%C3%B1oz.jpg" alt="Michael Muñoz" style="width:100%;height:clamp(380px,46vw,520px);object-fit:cover;object-position:center 18%;border-radius:6px;background:#E7E2D8;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;">
+        <span style="font-family:'Anton';font-size:18px;letter-spacing:.01em;">MICHAEL MUÑOZ</span>
+        <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#7A766E;">Product Manager</span>
+      </div>
+    </div>
+  </div>
+  <!-- STATS -->
+  <div style="margin-top:clamp(60px,8vw,120px);border-top:1px solid #DDD8CD;padding-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:36px 28px;">
+    <div data-reveal style="display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="10" style="font-family:'Anton';font-size:clamp(58px,7.6vw,118px);line-height:.85;">10</span></div>
+      <div style="margin-top:14px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:210px;line-height:1.35;" data-t="stat_years"></div>
+    </div>
+    <div data-reveal data-delay="90" style="display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:baseline;gap:1px;"><span data-count="10" style="font-family:'Anton';font-size:clamp(58px,7.6vw,118px);line-height:.85;">10</span><span style="font-family:'Anton';font-size:clamp(30px,3.6vw,56px);color:#FF4A1A;">+</span></div>
+      <div style="margin-top:14px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:210px;line-height:1.35;" data-t="stat_countries"></div>
+    </div>
+    <div data-reveal data-delay="180" style="display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:baseline;gap:1px;"><span data-count="3" style="font-family:'Anton';font-size:clamp(58px,7.6vw,118px);line-height:.85;">3</span><span style="font-family:'Anton';font-size:clamp(30px,3.6vw,56px);color:#FF4A1A;">M+</span></div>
+      <div style="margin-top:14px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:210px;line-height:1.35;" data-t="stat_users"></div>
+    </div>
+    <div data-reveal data-delay="270" style="display:flex;flex-direction:column;">
+      <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="4" style="font-family:'Anton';font-size:clamp(58px,7.6vw,118px);line-height:.85;">4</span></div>
+      <div style="margin-top:14px;font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:210px;line-height:1.35;" data-t="stat_industries"></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK INTRO -->
+<section id="trabajo" style="background:#F4F1EB;padding:clamp(40px,6vw,90px) clamp(20px,8vw,200px) 0;scroll-margin-top:60px;">
+  <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:22px;">
+    <span style="width:34px;height:2px;background:#FF4A1A;"></span>
+    <span style="font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#FF4A1A;" data-t="work_kicker"></span>
+  </div>
+  <h2 data-reveal data-delay="80" id="work-title" style="font-family:'Anton';font-weight:400;font-size:clamp(48px,9vw,148px);line-height:.86;letter-spacing:-.02em;max-width:14ch;"></h2>
+</section>
+
+<!-- CH01 TURIJOBS -->
+<section style="background:#F4F1EB;padding:clamp(56px,8vw,120px) clamp(20px,4vw,64px);display:flex;gap:clamp(34px,5vw,80px);align-items:center;flex-wrap:wrap;">
+  <div style="flex:1 1 320px;min-width:270px;order:1;">
+    <div data-reveal style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+      <span style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">01</span>
+      <span style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c1_tagline"></span>
+    </div>
+    <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(46px,6.5vw,104px);line-height:.9;letter-spacing:-.01em;">Turijobs</h3>
+    <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c1_role"></span> · Barcelona · 2021—2026</div>
+    <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#3D3A33;max-width:520px;" data-t="c1_summary"></p>
+    <div style="margin-top:38px;display:flex;gap:clamp(26px,4vw,56px);flex-wrap:wrap;">
+      <div data-reveal style="display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="3" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">3</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">M+</span></div>
+        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c1_m1"></div>
+      </div>
+      <div data-reveal data-delay="90" style="display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="80" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">80</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">K+</span></div>
+        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c1_m2"></div>
+      </div>
+      <div data-reveal data-delay="180" style="display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(26px,2.6vw,42px);color:#FF4A1A;">+</span><span data-count="20" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">20</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">%</span></div>
+        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:150px;line-height:1.35;" data-t="c1_m3"></div>
+      </div>
+    </div>
+    <div data-reveal data-delay="120" style="margin-top:22px;display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #E6E0D5;border-radius:100px;padding:9px 16px;">
+      <svg width="17" height="14" viewBox="0 0 24 20" fill="none"><path d="M2 16l6-6 4 3 8-9" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4h5v5" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span style="font-size:13.5px;font-weight:700;color:#2C2A24;" data-t="c1_growth"></span>
+    </div>
+    <div id="c1-tags" style="margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;"></div>
+  </div>
+  <div data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;order:2;"><img src="Mockups/Turijobs-t.png" alt="Turijobs" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
+</section>
+
+<!-- CH02 UNIVERSIDAD EUROPEA -->
+<section style="background:#F4F1EB;padding:clamp(56px,8vw,120px) clamp(20px,4vw,64px);display:flex;gap:clamp(34px,5vw,80px);align-items:center;flex-wrap:wrap;">
+  <div data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;order:2;"><img src="Mockups/Universidad%20europea%20online-t.png" alt="Universidad Europea" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
+  <div style="flex:1 1 320px;min-width:270px;order:1;">
+    <div data-reveal style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+      <span style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">02</span>
+      <span style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c2_tagline"></span>
+    </div>
+    <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(40px,5.6vw,88px);line-height:.9;letter-spacing:-.01em;">Universidad<br>Europea</h3>
+    <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c2_role"></span> · Madrid · 2020—2021</div>
+    <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#3D3A33;max-width:520px;" data-t="c2_summary"></p>
+    <div style="margin-top:38px;display:flex;gap:clamp(26px,4vw,56px);flex-wrap:wrap;">
+      <div data-reveal style="display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(26px,2.6vw,42px);color:#FF4A1A;">×</span><span data-count="3" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">3</span></div>
+        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:150px;line-height:1.35;" data-t="c2_m1"></div>
+      </div>
+      <div data-reveal data-delay="90" style="display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(30px,3vw,48px);color:#FF4A1A;">€</span><span data-count="800" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">800</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">K</span></div>
+        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c2_m2"></div>
+      </div>
+      <div data-reveal data-delay="180" style="display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="5" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">5</span></div>
+        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c2_m3"></div>
+      </div>
+    </div>
+    <div data-reveal data-delay="120" style="margin-top:22px;display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #E6E0D5;border-radius:100px;padding:9px 16px;">
+      <svg width="17" height="14" viewBox="0 0 24 20" fill="none"><path d="M2 16l6-6 4 3 8-9" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4h5v5" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span style="font-size:13.5px;font-weight:700;color:#2C2A24;" data-t="c2_growth"></span>
+    </div>
+    <div id="c2-tags" style="margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;"></div>
+  </div>
+</section>
+
+<!-- CH03 BIZUM -->
+<section style="background:#F4F1EB;padding:clamp(56px,8vw,120px) clamp(20px,4vw,64px);">
+  <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:30px;">
+    <span data-reveal style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">03</span>
+    <span data-reveal data-delay="40" style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c3_tagline"></span>
+  </div>
+  <div style="display:flex;gap:clamp(34px,5vw,80px);flex-wrap:wrap;align-items:center;">
+    <div style="flex:1 1 320px;min-width:270px;">
+      <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(58px,8vw,128px);line-height:.86;letter-spacing:-.01em;">Bizum</h3>
+      <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c3_role"></span> · Madrid · 2020—2021</div>
+      <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.7vw,20px);line-height:1.6;color:#3D3A33;max-width:540px;" data-t="c3_summary"></p>
+      <div style="margin-top:30px;display:flex;gap:clamp(26px,4vw,52px);flex-wrap:wrap;">
+        <div data-reveal style="display:flex;flex-direction:column;"><span style="font-family:'Anton';font-size:clamp(48px,5.5vw,88px);line-height:.78;color:#FF4A1A;">#1</span><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:190px;line-height:1.35;" data-t="c3_m1"></div></div>
+        <div data-reveal data-delay="90" style="display:flex;flex-direction:column;"><div style="display:flex;align-items:baseline;gap:1px;"><span data-count="30" style="font-family:'Anton';font-size:clamp(48px,5.5vw,88px);line-height:.78;">30</span><span style="font-family:'Anton';font-size:clamp(24px,2.6vw,40px);color:#FF4A1A;">M</span></div><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:190px;line-height:1.35;" data-t="c3_m2"></div></div>
+      </div>
+      <div style="margin-top:34px;display:flex;flex-direction:column;border-top:1px solid #DDD8CD;">
+        <div data-reveal style="display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid #DDD8CD;"><span style="font-family:'Anton';font-size:20px;color:#FF4A1A;min-width:34px;">01</span><span style="font-size:clamp(17px,1.8vw,22px);font-weight:700;color:#1A1813;" data-t="c3_p1"></span></div>
+        <div data-reveal data-delay="90" style="display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid #DDD8CD;"><span style="font-family:'Anton';font-size:20px;color:#FF4A1A;min-width:34px;">02</span><span style="font-size:clamp(17px,1.8vw,22px);font-weight:700;color:#1A1813;" data-t="c3_p2"></span></div>
+        <div data-reveal data-delay="180" style="display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid #DDD8CD;"><span style="font-family:'Anton';font-size:20px;color:#FF4A1A;min-width:34px;">03</span><span style="font-size:clamp(17px,1.8vw,22px);font-weight:700;color:#1A1813;" data-t="c3_p3"></span></div>
+      </div>
+    </div>
+    <div data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;"><img src="Mockups/Bizum-t.png" alt="Bizum" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
+  </div>
+</section>
+
+<!-- CH04 MERCADOLIBRE -->
+<section style="background:#F4F1EB;padding:clamp(56px,8vw,120px) clamp(20px,4vw,64px);display:flex;gap:clamp(34px,5vw,80px);align-items:center;flex-wrap:wrap;">
+  <div data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;order:2;"><img src="Mockups/Mercadolibre-t.png" alt="MercadoLibre" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
+  <div style="flex:1 1 320px;min-width:270px;order:1;">
+    <div data-reveal style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+      <span style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">04</span>
+      <span style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c4_tagline"></span>
+    </div>
+    <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(46px,6.2vw,100px);line-height:.9;letter-spacing:-.01em;">MeliWare <span style="font-size:clamp(13px,1.3vw,18px);font-weight:700;letter-spacing:.02em;color:#9A958B;vertical-align:middle;">× MercadoLibre</span></h3>
+    <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c4_role"></span> · Caracas · 2016—2018</div>
+    <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#3D3A33;max-width:520px;" data-t="c4_summary"></p>
+    <div style="margin-top:36px;display:flex;gap:clamp(22px,4vw,52px);flex-wrap:wrap;">
+      <div data-reveal style="display:flex;flex-direction:column;"><span style="font-family:'Anton';font-size:clamp(40px,4.6vw,74px);line-height:.82;color:#FF4A1A;">1ª</span><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:160px;line-height:1.35;" data-t="c4_m1"></div></div>
+      <div data-reveal data-delay="90" style="display:flex;flex-direction:column;"><span style="font-family:'Anton';font-size:clamp(40px,4.6vw,74px);line-height:.82;">&lt;2s</span><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:160px;line-height:1.35;" data-t="c4_m2"></div></div>
+      <div data-reveal data-delay="180" style="display:flex;flex-direction:column;"><div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(26px,2.6vw,42px);color:#FF4A1A;">+</span><span data-count="25" style="font-family:'Anton';font-size:clamp(40px,4.6vw,74px);line-height:.82;">25</span><span style="font-family:'Anton';font-size:clamp(22px,2.2vw,34px);color:#FF4A1A;">%</span></div><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:160px;line-height:1.35;" data-t="c4_m3"></div></div>
+    </div>
+    <div id="c4-tags" style="margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;"></div>
+  </div>
+</section>
+
+<!-- COMWARE -->
+<section id="comware" style="position:relative;background:#0E0E0F;color:#F4F1EB;padding:clamp(70px,11vw,170px) clamp(20px,8vw,200px);scroll-margin-top:60px;overflow:hidden;">
+  <div data-parallax data-speed="50" style="position:absolute;right:-2vw;top:4vw;font-family:'Anton';font-size:clamp(120px,26vw,440px);line-height:.8;color:#171717;pointer-events:none;z-index:0;">CW</div>
+  <div style="position:relative;z-index:2;">
+    <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:30px;">
+      <span style="width:34px;height:2px;background:#FF4A1A;"></span>
+      <span style="font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#FF4A1A;" data-t="cw_kicker"></span>
+    </div>
+    <h2 data-reveal data-delay="70" id="cw-title" style="font-family:'Anton';font-weight:400;font-size:clamp(50px,10vw,170px);line-height:.84;letter-spacing:-.02em;max-width:15ch;"></h2>
+    <div data-reveal data-delay="130" style="margin-top:20px;font-size:13.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#8A867E;" data-t="cw_dates"></div>
+    <p data-reveal data-delay="170" style="margin-top:28px;font-size:clamp(16px,1.7vw,21px);line-height:1.6;color:#CFCABF;max-width:680px;" data-t="cw_body"></p>
+    <div style="margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:34px 24px;border-top:1px solid #262626;padding-top:46px;">
+      <div data-reveal style="display:flex;flex-direction:column;"><div style="display:flex;align-items:baseline;gap:2px;"><span data-count="20" style="font-family:'Anton';font-size:clamp(54px,7vw,108px);line-height:.78;">20</span><span style="font-family:'Anton';font-size:clamp(26px,3vw,48px);color:#FF4A1A;">+</span></div><div style="margin-top:10px;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#94908A;" data-t="cw_s1"></div></div>
+      <div data-reveal data-delay="90" style="display:flex;flex-direction:column;"><div style="display:flex;align-items:baseline;gap:2px;"><span data-count="30" style="font-family:'Anton';font-size:clamp(54px,7vw,108px);line-height:.78;">30</span><span style="font-family:'Anton';font-size:clamp(26px,3vw,48px);color:#FF4A1A;">+</span></div><div style="margin-top:10px;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#94908A;" data-t="cw_s2"></div></div>
+      <div data-reveal data-delay="180" style="display:flex;flex-direction:column;"><div style="display:flex;align-items:baseline;gap:2px;"><span data-count="6" style="font-family:'Anton';font-size:clamp(54px,7vw,108px);line-height:.78;">6</span></div><div style="margin-top:10px;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#94908A;" data-t="cw_s3"></div></div>
+      <div data-reveal data-delay="270" style="display:flex;flex-direction:column;"><div style="display:flex;align-items:baseline;gap:2px;"><span data-count="5" style="font-family:'Anton';font-size:clamp(54px,7vw,108px);line-height:.78;">5</span></div><div style="margin-top:10px;font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#94908A;" data-t="cw_s4"></div></div>
+    </div>
+    <div data-reveal style="margin-top:44px;font-size:13.5px;font-weight:600;letter-spacing:.03em;color:#A8A39A;"><span data-t="cw_countries_label"></span> <span style="color:#F4F1EB;font-weight:700;">Venezuela · Miami · México · Colombia · Brasil · Aruba</span></div>
+    <div data-reveal style="margin-top:clamp(52px,7vw,90px);font-size:11.5px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#FF4A1A;margin-bottom:22px;" data-t="cw_clients_kicker"></div>
+    <div class="logos-grid">
+      <div data-reveal style="background:#fff;border-radius:8px;height:96px;display:flex;align-items:center;justify-content:center;padding:18px;"><img src="logos/Nestle.png" alt="Nestlé" style="max-width:100%;max-height:100%;width:auto;height:auto;"></div>
+      <div data-reveal data-delay="70" style="background:#fff;border-radius:8px;height:96px;display:flex;align-items:center;justify-content:center;padding:18px;"><img src="logos/Nestle_Purina.png" alt="Nestlé Purina" style="max-width:100%;max-height:100%;width:auto;height:auto;"></div>
+      <div data-reveal data-delay="140" style="background:#fff;border-radius:8px;height:96px;display:flex;align-items:center;justify-content:center;padding:18px;"><img src="logos/mastercard.svg" alt="Mastercard" style="max-width:100%;max-height:100%;width:auto;height:auto;"></div>
+      <div data-reveal data-delay="210" style="background:#fff;border-radius:8px;height:96px;display:flex;align-items:center;justify-content:center;padding:18px;"><img src="logos/pepsi.svg" alt="Pepsi" style="max-width:100%;max-height:100%;width:auto;height:auto;"></div>
+      <div data-reveal data-delay="280" style="background:#fff;border-radius:8px;height:96px;display:flex;align-items:center;justify-content:center;padding:18px;"><img src="logos/Diageo.jpg" alt="Diageo" style="max-width:100%;max-height:100%;width:auto;height:auto;"></div>
+      <div data-reveal data-delay="60" style="background:#fff;border-radius:8px;height:96px;display:flex;align-items:center;justify-content:center;padding:18px;"><img src="logos/Plumrose.png" alt="Plumrose" style="max-width:100%;max-height:100%;width:auto;height:auto;"></div>
+      <div data-reveal data-delay="130" style="background:#fff;border-radius:8px;height:96px;display:flex;align-items:center;justify-content:center;padding:18px;"><img src="logos/Aerocav.png" alt="Aerocav" style="max-width:100%;max-height:100%;width:auto;height:auto;"></div>
+      <div data-reveal data-delay="200" style="background:#fff;border-radius:8px;height:96px;display:flex;align-items:center;justify-content:center;padding:18px;"><img src="logos/Mercadolibre.jpg" alt="MercadoLibre" style="max-width:100%;max-height:100%;width:auto;height:auto;"></div>
+      <div data-reveal data-delay="270" style="background:#fff;border-radius:8px;height:96px;display:flex;align-items:center;justify-content:center;padding:16px;"><img src="logos/Cestaticket.svg" alt="Cestaticket Edenred" style="max-width:100%;max-height:100%;width:auto;height:auto;"></div>
+      <div data-reveal data-delay="100" style="background:#fff;border-radius:8px;height:96px;display:flex;align-items:center;justify-content:center;padding:14px;"><img src="logos/Andres_Moreno.png" alt="Andrés Moreno" style="max-width:100%;max-height:100%;width:auto;height:auto;border-radius:4px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- B-SIDE -->
+<section id="carab" style="background:#F4F1EB;padding:clamp(64px,9vw,140px) clamp(20px,8vw,200px);scroll-margin-top:60px;">
+  <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:24px;">
+    <span style="width:34px;height:2px;background:#FF4A1A;"></span>
+    <span style="font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#FF4A1A;" data-t="side_kicker"></span>
+  </div>
+  <h2 data-reveal data-delay="60" id="side-title" style="font-family:'Anton';font-weight:400;font-size:clamp(48px,8vw,140px);line-height:.86;letter-spacing:-.02em;"></h2>
+
+  <!-- Freelance -->
+  <div data-reveal style="margin-top:clamp(44px,5vw,72px);margin-bottom:22px;display:flex;align-items:center;gap:10px;">
+    <span style="width:22px;height:2px;background:#FF4A1A;"></span>
+    <span style="font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2C2A24;" data-t="side_freelance_kicker"></span>
+  </div>
+  <div style="display:flex;gap:clamp(30px,5vw,70px);flex-wrap:wrap;align-items:center;">
+    <p data-reveal style="flex:1 1 340px;min-width:280px;font-family:'Archivo';font-size:clamp(20px,2.4vw,30px);font-weight:700;line-height:1.28;letter-spacing:-.01em;color:#15140F;" data-t="side_manifesto"></p>
+    <div data-reveal data-delay="120" style="flex:0 1 320px;min-width:0;max-width:320px;margin-left:auto;margin-right:auto;">
+      <div id="carousel-freelance" class="carousel-wrap" style="border-radius:16px;aspect-ratio:1206/2360;"></div>
+    </div>
+  </div>
+
+  <!-- Founder -->
+  <div data-reveal style="margin-top:clamp(56px,7vw,96px);margin-bottom:22px;display:flex;align-items:center;gap:10px;">
+    <span style="width:22px;height:2px;background:#FF4A1A;"></span>
+    <span style="font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2C2A24;" data-t="side_founder_kicker"></span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(18px,2.4vw,28px);">
+    <div data-reveal style="background:#fff;border:1px solid #E6E0D5;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">
+      <div id="carousel-fragore" class="carousel-wrap" style="height:clamp(250px,31vw,350px);"></div>
+      <div style="padding:clamp(20px,2.4vw,30px);">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;">
+          <span style="font-family:'Anton';font-size:clamp(24px,2.8vw,38px);line-height:1;" data-t="side_brand_t"></span>
+          <span style="font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9A958B;" data-t="side_brand_meta"></span>
+        </div>
+        <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#4A463F;" data-t="side_brand_b"></p>
+      </div>
+    </div>
+    <div data-reveal data-delay="110" style="background:#fff;border:1px solid #E6E0D5;border-radius:12px;overflow:hidden;display:flex;flex-direction:column;">
+      <div id="carousel-latinta" class="carousel-wrap" style="height:clamp(250px,31vw,350px);"></div>
+      <div style="padding:clamp(20px,2.4vw,30px);">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;">
+          <span style="font-family:'Anton';font-size:clamp(24px,2.8vw,38px);line-height:1;" data-t="side_rest_t"></span>
+          <span style="font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9A958B;" data-t="side_rest_meta"></span>
+        </div>
+        <p style="margin-top:14px;font-size:15px;line-height:1.6;color:#4A463F;" data-t="side_rest_b"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Roots -->
+  <div data-reveal style="margin-top:clamp(56px,7vw,96px);margin-bottom:22px;display:flex;align-items:center;gap:10px;">
+    <span style="width:22px;height:2px;background:#FF4A1A;"></span>
+    <span style="font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2C2A24;" data-t="side_roots_kicker"></span>
+    <span style="margin-left:auto;font-family:'Anton';font-size:14px;letter-spacing:.03em;color:#9A958B;">2009 — 2012</span>
+  </div>
+  <div style="display:flex;gap:clamp(30px,5vw,70px);flex-wrap:wrap;align-items:flex-start;">
+    <p data-reveal style="flex:1 1 360px;min-width:280px;font-size:clamp(15.5px,1.6vw,18px);line-height:1.6;color:#4A463F;max-width:520px;" data-t="side_roots_b"></p>
+    <div id="roots-list" style="flex:1 1 360px;min-width:280px;border-top:1px solid #DDD8CD;"></div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack" style="background:#F4F1EB;padding:clamp(64px,9vw,140px) clamp(20px,8vw,200px);scroll-margin-top:60px;">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:clamp(38px,5vw,60px);">
+    <div>
+      <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:24px;">
+        <span style="width:34px;height:2px;background:#FF4A1A;"></span>
+        <span style="font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#FF4A1A;" data-t="stack_kicker"></span>
+      </div>
+      <h2 data-reveal data-delay="60" id="stack-title" style="font-family:'Anton';font-weight:400;font-size:clamp(48px,7vw,120px);line-height:.88;letter-spacing:-.02em;"></h2>
+    </div>
+    <div data-reveal data-delay="120" style="display:flex;align-items:flex-end;gap:14px;">
+      <span style="font-family:'Anton';font-size:clamp(54px,7vw,104px);line-height:.78;">49</span>
+      <span style="font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:130px;line-height:1.3;margin-bottom:.45em;" data-t="stack_count_label"></span>
+    </div>
+  </div>
+  <div id="stack-list" style="border-top:1px solid #DDD8CD;"></div>
+</section>
+
+<!-- EDUCATION -->
+<section id="formacion" style="background:#F4F1EB;padding:clamp(64px,9vw,140px) clamp(20px,8vw,200px);scroll-margin-top:60px;">
+  <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:26px;">
+    <span style="width:34px;height:2px;background:#FF4A1A;"></span>
+    <span style="font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#FF4A1A;" data-t="edu_kicker"></span>
+  </div>
+  <h2 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(40px,6vw,96px);line-height:.9;letter-spacing:-.01em;margin-bottom:46px;" data-t="edu_title"></h2>
+  <div id="edu-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 60px;border-top:1px solid #DDD8CD;"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contacto" style="background:#0E0E0F;color:#F4F1EB;padding:clamp(70px,11vw,170px) clamp(20px,4vw,64px);scroll-margin-top:60px;">
+  <div style="display:flex;gap:clamp(40px,6vw,100px);flex-wrap:wrap;align-items:flex-start;">
+    <div style="flex:1 1 360px;min-width:280px;">
+      <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:26px;">
+        <span style="width:34px;height:2px;background:#FF4A1A;"></span>
+        <span style="font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#FF4A1A;" data-t="contact_kicker"></span>
+      </div>
+      <h2 data-reveal data-delay="60" id="contact-title" style="font-family:'Anton';font-weight:400;font-size:clamp(54px,9vw,150px);line-height:.84;letter-spacing:-.02em;"></h2>
+      <p data-reveal data-delay="120" style="margin-top:26px;font-size:clamp(16px,1.7vw,20px);line-height:1.55;color:#CFCABF;max-width:440px;" data-t="contact_body"></p>
+      <div data-reveal data-delay="180" style="margin-top:44px;font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#7E7A72;margin-bottom:18px;" data-t="contact_direct"></div>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <a data-reveal href="mailto:munozmichael01@gmail.com" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid #262626;font-size:clamp(17px,2vw,24px);font-weight:700;">munozmichael01@gmail.com<span style="font-family:'Anton';color:#FF4A1A;">↗</span></a>
+        <a data-reveal data-delay="70" href="https://www.linkedin.com/in/michaelcwd" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid #262626;font-size:clamp(17px,2vw,24px);font-weight:700;">LinkedIn · /michaelcwd<span style="font-family:'Anton';color:#FF4A1A;">↗</span></a>
+        <a data-reveal data-delay="140" href="https://wa.me/34685601974" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid #262626;border-bottom:1px solid #262626;font-size:clamp(17px,2vw,24px);font-weight:700;">WhatsApp · +34 685 601 974<span style="font-family:'Anton';color:#FF4A1A;">↗</span></a>
+      </div>
+    </div>
+    <div data-reveal data-delay="120" style="flex:1 1 380px;min-width:300px;background:#161616;border:1px solid #262626;border-radius:14px;padding:clamp(26px,3vw,40px);">
+      <div id="form-wrap">
+        <form id="contact-form" style="display:flex;flex-direction:column;gap:18px;">
+          <label style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8A867E;" data-t="form_name"></span>
+            <input type="text" name="name" required class="contact-input">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8A867E;" data-t="form_email"></span>
+            <input type="email" name="email" required class="contact-input">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:8px;">
+            <span style="font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#8A867E;" data-t="form_msg"></span>
+            <textarea name="message" rows="4" required class="contact-input" style="resize:vertical;"></textarea>
+          </label>
+          <button type="submit" id="form-btn" style="cursor:pointer;background:#FF4A1A;color:#fff;border:none;border-radius:100px;padding:16px 24px;font-size:15px;font-weight:800;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:10px;transition:opacity .2s;"><span data-t="form_send"></span><span style="font-family:'Anton';">→</span></button>
+          <span style="font-size:12px;color:#6E6A62;text-align:center;line-height:1.5;" data-t="form_note"></span>
+        </form>
+      </div>
+      <div id="form-success" style="display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;padding:40px 10px;">
+        <span style="display:inline-flex;width:64px;height:64px;border-radius:50%;background:#FF4A1A;align-items:center;justify-content:center;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span style="font-family:'Anton';font-size:30px;line-height:1;" data-t="form_success_t"></span>
+        <span style="font-size:14.5px;color:#CFCABF;max-width:280px;line-height:1.5;" data-t="form_success_b"></span>
+      </div>
+    </div>
+  </div>
+  <!-- FOOTER -->
+  <div style="margin-top:clamp(70px,10vw,140px);border-top:1px solid #262626;padding-top:34px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+    <span style="font-family:'Anton';font-size:clamp(40px,7vw,110px);line-height:.82;letter-spacing:-.01em;">MICHAEL MUÑOZ</span>
+    <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-end;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <a href="https://www.linkedin.com/in/michaelcwd" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <a href="mailto:munozmichael01@gmail.com" aria-label="Email" class="social-icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a href="https://wa.me/34685601974" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16 16 0 0 1 4.5 5a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;text-align:right;">
+        <span style="font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8A867E;">Product Manager</span>
+        <span style="font-size:12.5px;font-weight:600;color:#6E6A62;">© 2026 · Barcelona · Caracas</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- #top -->
+
+<script>
+const C = {
+  es: {
+    nav_work:'Trayectoria', nav_contact:'Contacto', nav_bside:'La cara B', nav_stack:'Stack', nav_edu:'Formación',
+    hero_label:'Product Manager', hero_backdrop:'PORTAFOLIO',
+    hero_headline:'Construyo y <em style="font-style:italic;font-weight:800;color:#0E0E0F;">escalo</em> productos digitales B2B &amp; B2C, con datos e IA en el centro de cada decisión.',
+    hero_scroll:'Desliza', hero_tagline:'B2B & B2C · Marketplaces · Estrategia multimercado · IA & Data',
+    about_kicker:'Sobre mí',
+    about_lead:'Traduzco discovery en producto: de la estrategia al delivery, con datos e IA en el centro.',
+    about_body:'Product Manager con 10 años liderando productos digitales end-to-end en HRTech, EdTech, Fintech y ecommerce. Combino la autonomía para prototipar y lanzar de forma independiente con la experiencia de trabajar junto a equipos de ingeniería en entornos de alta complejidad técnica.',
+    about_skills_kicker:'Lo que hago',
+    skills:['Product Strategy','Discovery & Delivery','Data-driven','AI Products','UX & CRO','Pricing & GTM','Product Marketing','API & Platform','OKRs & KPIs','Stakeholders','Growth'],
+    stat_years:'años en producto digital', stat_countries:'países y mercados', stat_users:'usuarios en productos liderados', stat_industries:'industrias: HRTech, EdTech, Fintech, Ecommerce',
+    work_kicker:'Trayectoria', work_title:'Cada rol, <em style="font-style:italic;color:#FF4A1A;">un capítulo.</em>',
+    c1_tagline:'Marketplace de empleo B2B & B2C', c1_role:'Product Manager',
+    c1_summary:'Estrategia de producto end-to-end para la plataforma líder de empleo en turismo y hostelería. Lideré discovery, delivery, datos e IA en tres mercados, junto al equipo de ingeniería en el refactoring de la plataforma.',
+    c1_m1:'candidatos', c1_m2:'empresas', c1_m3:'crecimiento anual',
+    c1_growth:'×2 en usuarios · de 1.5M a 3M registrados',
+    c1_tags:['Taxonomía con IA','CV parsing','Asistente de ofertas IA','Chatbot recomendador','CMS de microsites','Rebrand completo'],
+    c2_tagline:'EdTech · Escuela de Negocios online', c2_role:'Digital Product Manager',
+    c2_summary:'Crecimiento e innovación del portafolio online con una estrategia basada en datos, pricing y go-to-market en España y Latinoamérica.',
+    c2_m1:'crecimiento del portfolio online', c2_m2:'presupuesto anual', c2_m3:'mercados LATAM + ES',
+    c2_growth:'De 4 a 12 programas online',
+    c2_tags:['Market research','Test A/B','Bundles & cross-sell','Pricing','Go-to-market'],
+    c3_tagline:'Rediseño integral de producto', c3_role:'Digital Analyst Consultant',
+    c3_summary:'Rediseño integral de la web de Bizum con un enfoque transversal y basado en datos. La web terminó posicionándose #1 en búsqueda orgánica, por delante incluso de las apps bancarias que integran Bizum.',
+    c3_m1:'en búsqueda orgánica', c3_m2:'usuarios de Bizum',
+    c3_p1:'SEO técnico y arquitectura de información orientada a búsqueda',
+    c3_p2:'Copy, CTAs y wireframes validados con foco en conversión',
+    c3_p3:'Framework de medición con dashboards en tiempo real',
+    c4_tagline:'IA certificada por MercadoLibre', c4_role:'Product Owner',
+    c4_summary:'Producto de IA que aprende de las preguntas de los compradores y sugiere respuestas automáticas, reduciendo la carga operativa de los vendedores y mejorando la conversión.',
+    c4_m1:'app certificada por ML', c4_m2:'tiempo de respuesta', c4_m3:'conversión a ventas',
+    c4_tags:['Discovery con vendedores','Motor de automatización IA','Capa de BI'],
+    cw_kicker:'Capítulo especial', cw_title:'Construí una agencia <em style="font-style:italic;color:#FF4A1A;">desde cero.</em>',
+    cw_dates:'ComWare Digital · Product Owner · Caracas · 2013 — 2018',
+    cw_body:'Product Owner y constructor de una agencia digital de UX/UI, desarrollo y producto. En cinco años levanté un equipo multidisciplinario de más de 20 personas y gestioné más de 30 clientes en 6 países, trabajando con marcas de primer nivel.',
+    cw_s1:'personas en el equipo', cw_s2:'clientes gestionados', cw_s3:'países', cw_s4:'años construyendo',
+    cw_countries_label:'Operando en', cw_clients_kicker:'Marcas que confiaron',
+    side_kicker:'Fuera del guion', side_title:'La cara <em style="font-style:italic;color:#FF4A1A;">B.</em>',
+    side_manifesto:'En paralelo a todo esto, llevo más de 5 años desarrollando proyectos freelance de diseño web y analítica de datos — más de 10 proyectos para marcas y pequeñas empresas. Construir es un hábito, no un horario.',
+    side_freelance_kicker:'Freelance · Diseño & Analítica', side_founder_kicker:'Fundador & operador',
+    side_brand_t:'Marca de streetwear', side_brand_meta:'2014 — 2015 · Venezuela',
+    side_brand_b:'Marca de ropa masculina construida de cero: producto fabricado en Italia, marketplace propio, redes sociales y paid ads. Del diseño a la venta.',
+    side_rest_t:'Restaurante La Tinta', side_rest_meta:'2018 — 2019 · Madrid',
+    side_rest_b:'Fundé y gestioné un restaurante de cocina fusión: identidad de marca, eventos como motor de adquisición, pricing, costes y operación diaria.',
+    side_roots_kicker:'Primeros pasos',
+    side_roots_b:'Mis raíces están en el lado financiero y operativo del negocio — administración y cuentas por cobrar y pagar en industrias reguladas. De ahí viene mi instinto por los números.',
+    side_roots:[{n:'Banco de Venezuela',s:'Banca'},{n:'Estée Lauder',s:'Beauty'},{n:'Grupo Mistral',s:'Pharma'}],
+    stack_kicker:'Stack', stack_title:'Caja de <em style="font-style:italic;color:#FF4A1A;">herramientas.</em>', stack_count_label:'herramientas en el kit',
+    stack:[
+      {no:'01',cat:'Data & Analytics',tools:['GA4','Looker Studio','BigQuery','SQL','Power BI','Tableau','Elasticsearch']},
+      {no:'02',cat:'IA · Build & APIs',tools:['Cursor','Claude Code','Google AI Studio','Antigravity','Anthropic API','OpenAI API']},
+      {no:'03',cat:'IA · Asistentes',tools:['ChatGPT','Claude','Gemini','Perplexity','NotebookLM','Lovable','v0']},
+      {no:'04',cat:'CRO & Experimentación',tools:['Optimizely','Amplitude','Hotjar','Microsoft Clarity']},
+      {no:'05',cat:'Producto & Gestión',tools:['Jira','Miro','Notion']},
+      {no:'06',cat:'Diseño & No-code',tools:['Figma','Webflow','WordPress','Shopify','Canva']},
+      {no:'07',cat:'Pagos & Checkout',tools:['Stripe','PayPal','MercadoPago','Shopify Payments']},
+      {no:'08',cat:'Dev & Infra',tools:['Vercel','GitHub','Supabase','Airtable','VS Code','Datadog','Postman','Swagger']},
+      {no:'09',cat:'SEO técnico',tools:['Search Console','Semrush','Ahrefs','Screaming Frog','Google Indexing API']}
+    ],
+    edu_kicker:'Formación', edu_title:'Aprendizaje continuo',
+    edu:[
+      {n:'The Hero Camp · Madrid',p:'Digital Product Manager'},
+      {n:'Digital Innovation Center · Madrid',p:'Máster en CRO'},
+      {n:'ICEMD–ESIC · Madrid',p:'Programa Superior en Marketing Digital'},
+      {n:'IronHack · Madrid',p:'UX/UI Design'},
+      {n:'Brother Escuela de Creativos · Caracas',p:'Máster Creativo'},
+      {n:'Escuela Web · Caracas',p:'Gerencia de Proyectos Web'},
+      {n:'IESA · Caracas',p:'Lanzamiento de Productos'},
+      {n:'Universidad Santa María · Caracas',p:'Administración de Empresas'}
+    ],
+    contact_kicker:'Contacto', contact_title:'Hablemos de <em style="font-style:italic;color:#FF4A1A;">producto.</em>',
+    contact_body:'Disponible para roles de producto y colaboraciones. Escríbeme y te respondo en menos de 24 horas.',
+    contact_direct:'O escríbeme directo',
+    form_name:'Nombre', form_email:'Email', form_msg:'Mensaje', form_send:'Enviar mensaje',
+    form_note:'El envío del formulario se conectará próximamente.',
+    form_success_t:'¡Gracias!', form_success_b:'Recibí tu mensaje y te responderé pronto.'
+  },
+  en: {
+    nav_work:'Work', nav_contact:'Contact', nav_bside:'B-side', nav_stack:'Stack', nav_edu:'Education',
+    hero_label:'Product Manager', hero_backdrop:'PORTFOLIO',
+    hero_headline:'I build and <em style="font-style:italic;font-weight:800;color:#0E0E0F;">scale</em> B2B &amp; B2C digital products, with data and AI at the core of every decision.',
+    hero_scroll:'Scroll', hero_tagline:'B2B & B2C · Marketplaces · Multi-market strategy · AI & Data',
+    about_kicker:'About',
+    about_lead:'I turn discovery into product: from strategy to delivery, with data and AI at the core.',
+    about_body:'Product Manager with 10 years leading end-to-end digital products across HRTech, EdTech, Fintech and ecommerce. I combine the autonomy to prototype and ship independently with the experience of working closely with engineering teams in high-complexity technical environments.',
+    about_skills_kicker:'What I do',
+    skills:['Product Strategy','Discovery & Delivery','Data-driven','AI Products','UX & CRO','Pricing & GTM','Product Marketing','API & Platform','OKRs & KPIs','Stakeholders','Growth'],
+    stat_years:'years in digital product', stat_countries:'countries & markets', stat_users:'users in products I led', stat_industries:'industries: HRTech, EdTech, Fintech, Ecommerce',
+    work_kicker:'Selected work', work_title:'Every role, <em style="font-style:italic;color:#FF4A1A;">a chapter.</em>',
+    c1_tagline:'B2B & B2C job marketplace', c1_role:'Product Manager',
+    c1_summary:'End-to-end product strategy for the leading job platform in tourism & hospitality. I led discovery, delivery, data and AI across three markets, working with engineering on the platform refactoring.',
+    c1_m1:'candidates', c1_m2:'companies', c1_m3:'yearly growth',
+    c1_growth:'×2 in users · from 1.5M to 3M registered',
+    c1_tags:['AI taxonomy','CV parsing','AI posting assistant','Recommender chatbot','Microsite CMS','Full rebrand'],
+    c2_tagline:'EdTech · Online Business School', c2_role:'Digital Product Manager',
+    c2_summary:'Growth and innovation for the online portfolio through a data-driven strategy, pricing and go-to-market across Spain and Latin America.',
+    c2_m1:'online portfolio growth', c2_m2:'annual budget', c2_m3:'markets, LATAM + Spain',
+    c2_growth:'From 4 to 12 online programs',
+    c2_tags:['Market research','A/B testing','Bundles & cross-sell','Pricing','Go-to-market'],
+    c3_tagline:'Full product redesign', c3_role:'Digital Analyst Consultant',
+    c3_summary:"Full redesign of Bizum's website through a cross-functional, data-driven approach. The site ended up ranking #1 in organic search — ahead even of the banking apps that embed Bizum.",
+    c3_m1:'in organic search', c3_m2:'Bizum users',
+    c3_p1:'Technical SEO and search-driven information architecture',
+    c3_p2:'Validated copy, CTAs and wireframes focused on conversion',
+    c3_p3:'Measurement framework with real-time dashboards',
+    c4_tagline:'AI certified by MercadoLibre', c4_role:'Product Owner',
+    c4_summary:'An AI product that learns from buyer questions and suggests automated responses, cutting seller workload and improving conversion.',
+    c4_m1:'app certified by ML', c4_m2:'response time', c4_m3:'sales conversion',
+    c4_tags:['Discovery with sellers','AI automation engine','BI layer'],
+    cw_kicker:'Special chapter', cw_title:'I built an agency <em style="font-style:italic;color:#FF4A1A;">from zero.</em>',
+    cw_dates:'ComWare Digital · Product Owner · Caracas · 2013 — 2018',
+    cw_body:'Product Owner and builder of a digital agency for UX/UI, development and product. Over five years I grew a multidisciplinary team of 20+ people and managed 30+ clients across 6 countries, working with first-tier brands.',
+    cw_s1:'people on the team', cw_s2:'clients managed', cw_s3:'countries', cw_s4:'years building',
+    cw_countries_label:'Operating across', cw_clients_kicker:'Brands that trusted us',
+    side_kicker:'Off the script', side_title:'The <em style="font-style:italic;color:#FF4A1A;">B-side.</em>',
+    side_manifesto:"Alongside all of this, I've spent 5+ years on freelance web design and data analytics — 10+ projects for brands and small businesses. Building is a habit, not a schedule.",
+    side_freelance_kicker:'Freelance · Design & Analytics', side_founder_kicker:'Founder & operator',
+    side_brand_t:'Streetwear label', side_brand_meta:'2014 — 2015 · Venezuela',
+    side_brand_b:"A men's clothing brand from scratch: product manufactured in Italy, own marketplace, social media and paid ads. From design to sale.",
+    side_rest_t:'Restaurante La Tinta', side_rest_meta:'2018 — 2019 · Madrid',
+    side_rest_b:'Founded and ran a fusion-cuisine restaurant: brand identity, events as an acquisition engine, pricing, costs and daily operations.',
+    side_roots_kicker:'Early steps',
+    side_roots_b:"My roots are on the financial and operational side of business — administration and accounts receivable/payable across regulated industries. That's where my instinct for numbers comes from.",
+    side_roots:[{n:'Banco de Venezuela',s:'Banking'},{n:'Estée Lauder',s:'Beauty'},{n:'Grupo Mistral',s:'Pharma'}],
+    stack_kicker:'Stack', stack_title:'The <em style="font-style:italic;color:#FF4A1A;">toolbox.</em>', stack_count_label:'tools in the kit',
+    stack:[
+      {no:'01',cat:'Data & Analytics',tools:['GA4','Looker Studio','BigQuery','SQL','Power BI','Tableau','Elasticsearch']},
+      {no:'02',cat:'AI · Build & APIs',tools:['Cursor','Claude Code','Google AI Studio','Antigravity','Anthropic API','OpenAI API']},
+      {no:'03',cat:'AI · Assistants',tools:['ChatGPT','Claude','Gemini','Perplexity','NotebookLM','Lovable','v0']},
+      {no:'04',cat:'CRO & Experimentation',tools:['Optimizely','Amplitude','Hotjar','Microsoft Clarity']},
+      {no:'05',cat:'Product & Management',tools:['Jira','Miro','Notion']},
+      {no:'06',cat:'Design & No-code',tools:['Figma','Webflow','WordPress','Shopify','Canva']},
+      {no:'07',cat:'Payments & Checkout',tools:['Stripe','PayPal','MercadoPago','Shopify Payments']},
+      {no:'08',cat:'Dev & Infra',tools:['Vercel','GitHub','Supabase','Airtable','VS Code','Datadog','Postman','Swagger']},
+      {no:'09',cat:'Technical SEO',tools:['Search Console','Semrush','Ahrefs','Screaming Frog','Google Indexing API']}
+    ],
+    edu_kicker:'Education', edu_title:'Always learning',
+    edu:[
+      {n:'The Hero Camp · Madrid',p:'Digital Product Manager'},
+      {n:'Digital Innovation Center · Madrid',p:"Master's in CRO"},
+      {n:'ICEMD–ESIC · Madrid',p:'Advanced Digital Marketing'},
+      {n:'IronHack · Madrid',p:'UX/UI Design'},
+      {n:'Brother Escuela de Creativos · Caracas',p:"Creative Master's"},
+      {n:'Escuela Web · Caracas',p:'Web Project Management'},
+      {n:'IESA · Caracas',p:'Product Launch'},
+      {n:'Universidad Santa María · Caracas',p:'Business Administration'}
+    ],
+    contact_kicker:'Contact', contact_title:"Let's talk <em style=\"font-style:italic;color:#FF4A1A;\">product.</em>",
+    contact_body:'Open to product roles and collaborations. Drop me a line — I reply within 24 hours.',
+    contact_direct:'Or reach me directly',
+    form_name:'Name', form_email:'Email', form_msg:'Message', form_send:'Send message',
+    form_note:'Form delivery will be connected soon.',
+    form_success_t:'Thank you!', form_success_b:'I got your message and will get back to you soon.'
+  }
+};
+
+let lang = 'es';
+
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function renderLists(t) {
+  // Skills
+  const sl = document.getElementById('skills-list');
+  if(sl) sl.innerHTML = t.skills.map(s=>`<span class="pill" data-reveal>${esc(s)}</span>`).join('');
+  // Work chapter tags
+  ['c1','c2','c4'].forEach(k=>{
+    const el = document.getElementById(k+'-tags');
+    if(el) el.innerHTML = t[k+'_tags'].map(tag=>`<span class="tag" data-reveal>${esc(tag)}</span>`).join('');
+  });
+  // Stack
+  const stk = document.getElementById('stack-list');
+  if(stk) stk.innerHTML = t.stack.map(g=>`
+    <div data-reveal style="display:flex;gap:clamp(18px,4vw,60px);flex-wrap:wrap;padding:clamp(20px,2.4vw,30px) 0;border-bottom:1px solid #DDD8CD;">
+      <div style="flex:0 0 240px;min-width:170px;display:flex;align-items:flex-start;gap:12px;">
+        <span style="font-family:'Anton';font-size:15px;color:#FF4A1A;margin-top:3px;">${esc(g.no)}</span>
+        <span style="font-size:clamp(16px,1.5vw,19px);font-weight:800;color:#15140F;letter-spacing:-.005em;">${esc(g.cat)}</span>
+      </div>
+      <div style="flex:1 1 340px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;">
+        ${g.tools.map(tool=>`<span class="pill-white">${esc(tool)}</span>`).join('')}
+      </div>
+    </div>`).join('');
+  // Education
+  const edu = document.getElementById('edu-list');
+  if(edu) edu.innerHTML = t.edu.map(e=>`
+    <div data-reveal style="display:flex;flex-direction:column;gap:3px;padding:20px 0;border-bottom:1px solid #DDD8CD;">
+      <span style="font-size:16px;font-weight:800;color:#15140F;">${esc(e.n)}</span>
+      <span style="font-size:13.5px;font-weight:600;color:#7A766E;">${esc(e.p)}</span>
+    </div>`).join('');
+  // Roots
+  const roots = document.getElementById('roots-list');
+  if(roots) roots.innerHTML = t.side_roots.map(r=>`
+    <div data-reveal style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:16px 0;border-bottom:1px solid #DDD8CD;">
+      <span style="font-size:clamp(17px,1.9vw,22px);font-weight:800;color:#15140F;">${esc(r.n)}</span>
+      <span style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9A958B;">${esc(r.s)}</span>
+    </div>`).join('');
+}
+
+function renderPage(t) {
+  // Simple text
+  document.querySelectorAll('[data-t]').forEach(el=>{
+    const key = el.getAttribute('data-t');
+    if(t[key]!==undefined) el.textContent = t[key];
+  });
+  // HTML elements (headings with em)
+  const htmlMap = {
+    'hero-headline':'hero_headline',
+    'work-title':'work_title',
+    'cw-title':'cw_title',
+    'side-title':'side_title',
+    'stack-title':'stack_title',
+    'contact-title':'contact_title'
+  };
+  Object.entries(htmlMap).forEach(([id,key])=>{
+    const el = document.getElementById(id);
+    if(el && t[key]) el.innerHTML = t[key];
+  });
+  renderLists(t);
+  setupReveal();
+}
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  ['btn-es','btn-en','btn-es-m','btn-en-m'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.classList.toggle('active', id.includes(l==='es'?'es':'en'));
+  });
+  renderPage(C[lang]);
+}
+
+// Nav
+let menuOpen = false;
+function toggleMenu(){
+  menuOpen = !menuOpen;
+  const m = document.getElementById('mobile-menu');
+  const ic = document.getElementById('icon-close');
+  const im = document.getElementById('icon-menu');
+  m.style.display = menuOpen ? 'flex' : 'none';
+  if(ic) ic.style.display = menuOpen ? 'block' : 'none';
+  if(im) im.style.display = menuOpen ? 'none' : 'block';
+}
+function closeMenu(){ if(menuOpen) toggleMenu(); }
+
+// Nav scroll
+function setupNav(){
+  const nav = document.getElementById('main-nav');
+  if(!nav) return;
+  const apply = ()=>{
+    const on = window.scrollY > 40;
+    nav.style.background = on ? 'rgba(244,241,235,.88)' : 'transparent';
+    nav.style.backdropFilter = on ? 'blur(14px)' : 'none';
+    nav.style.webkitBackdropFilter = on ? 'blur(14px)' : 'none';
+    nav.style.borderBottomColor = on ? '#DDD8CD' : 'transparent';
+  };
+  apply();
+  window.addEventListener('scroll', apply, {passive:true});
+}
+
+// Reveal
+let revealObserver;
+function setupReveal(){
+  if(revealObserver) revealObserver.disconnect();
+  const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const els = document.querySelectorAll('[data-reveal]');
+  if(reduce){ els.forEach(el=>{el.style.opacity='1';el.style.transform='none';}); return; }
+  els.forEach(el=>{
+    el.style.opacity='0';
+    if(!el.hasAttribute('data-parallax')) el.style.transform='translateY(42px)';
+  });
+  revealObserver = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el = e.target;
+        const delay = parseInt(el.getAttribute('data-delay')||'0',10);
+        setTimeout(()=>{
+          el.style.opacity='1';
+          if(!el.hasAttribute('data-parallax')) el.style.transform='none';
+        }, delay);
+        revealObserver.unobserve(el);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -8% 0px'});
+  els.forEach(el=>revealObserver.observe(el));
+}
+
+// Count-up
+function setupCounters(){
+  const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const els = document.querySelectorAll('[data-count]');
+  if(reduce){ els.forEach(el=>el.textContent=el.getAttribute('data-count')); return; }
+  const run = el=>{
+    const target = parseFloat(el.getAttribute('data-count'));
+    if(isNaN(target)) return;
+    const isFloat = el.getAttribute('data-count').includes('.');
+    const dur = 1500, start = performance.now();
+    const tick = now=>{
+      const p = Math.min((now-start)/dur,1);
+      const v = target*(1-Math.pow(1-p,3));
+      el.textContent = isFloat ? v.toFixed(1) : Math.round(v).toString();
+      if(p<1) requestAnimationFrame(tick); else el.textContent=el.getAttribute('data-count');
+    };
+    requestAnimationFrame(tick);
+  };
+  els.forEach(el=>el.textContent='0');
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ run(e.target); obs.unobserve(e.target); } });
+  },{threshold:0.6});
+  els.forEach(el=>obs.observe(el));
+}
+
+// Parallax
+function setupParallax(){
+  const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce) return;
+  const items = Array.from(document.querySelectorAll('[data-parallax]')).map(el=>({
+    el, speed: parseFloat(el.getAttribute('data-speed')||'0')
+  }));
+  let ticking = false;
+  const update = ()=>{
+    const vh = window.innerHeight;
+    items.forEach(({el,speed})=>{
+      const r = el.getBoundingClientRect();
+      const progress = (r.top + r.height/2 - vh/2) / vh;
+      el.style.transform = `translate3d(0,${(progress*speed).toFixed(1)}px,0)`;
+    });
+    ticking = false;
+  };
+  const onScroll = ()=>{ if(!ticking){ticking=true;requestAnimationFrame(update);} };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  update();
+}
+
+// Carousel
+class Carousel {
+  constructor(id, images, opts={}){
+    this.el = document.getElementById(id);
+    if(!this.el || !images.length) return;
+    this.images = images;
+    this.current = 0;
+    this.interval = opts.interval || 4000;
+    this.dark = opts.dark || false;
+    this.build();
+    if(images.length > 1) this.timer = setInterval(()=>this.next(), this.interval);
+  }
+  build(){
+    this.el.innerHTML = '';
+    const track = document.createElement('div');
+    track.className = 'carousel-track';
+    this.track = track;
+    this.images.forEach(src=>{
+      const slide = document.createElement('div');
+      slide.className = 'carousel-slide';
+      const img = document.createElement('img');
+      img.src = src; img.alt = '';
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;display:block;';
+      slide.appendChild(img);
+      track.appendChild(slide);
+    });
+    this.el.appendChild(track);
+    if(this.images.length > 1){
+      const dots = document.createElement('div');
+      dots.className = 'carousel-dots';
+      this.dots = this.images.map((_,i)=>{
+        const d = document.createElement('button');
+        d.className = 'carousel-dot' + (i===0?' active':'');
+        const active = this.dark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.7)';
+        const idle = this.dark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.25)';
+        d.style.background = i===0 ? active : idle;
+        d.onclick = ()=>this.goto(i);
+        dots.appendChild(d);
+        return d;
+      });
+      this.el.appendChild(dots);
+    }
+  }
+  goto(i){
+    this.current = i;
+    this.track.style.transform = `translateX(-${100*i}%)`;
+    if(this.dots){
+      const active = this.dark ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.7)';
+      const idle = this.dark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.25)';
+      this.dots.forEach((d,j)=>{ d.style.background = j===i?active:idle; d.classList.toggle('active',j===i); });
+    }
+  }
+  next(){ this.goto((this.current+1)%this.images.length); }
+}
+
+// Form
+function setupForm(){
+  const form = document.getElementById('contact-form');
+  if(!form) return;
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    document.getElementById('form-wrap').style.display = 'none';
+    const s = document.getElementById('form-success');
+    s.style.display = 'flex';
+  });
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', ()=>{
+  renderPage(C.es);
+  setupNav();
+  setupCounters();
+  setupParallax();
+  setupForm();
+  new Carousel('carousel-freelance',
+    ['Freelance%20fotos/f1.jpg','Freelance%20fotos/f2.jpg','Freelance%20fotos/f3.jpg','Freelance%20fotos/f4.jpg'],
+    {interval:5200, dark:true}
+  );
+  new Carousel('carousel-fragore',
+    ['Fragore%20Fotos/1.jpg','Fragore%20Fotos/2.jpg','Fragore%20Fotos/3.jpg','Fragore%20Fotos/4.JPG'],
+    {interval:4200, dark:true}
+  );
+  new Carousel('carousel-latinta',
+    ['La%20Tinta%20fotos/1.JPG','La%20Tinta%20fotos/2.JPG','La%20Tinta%20fotos/3.JPG','La%20Tinta%20fotos/4.jpg'],
+    {interval:4600, dark:true}
+  );
+});
+</script>
+</body>
+</html>
