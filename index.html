@@ -56,7 +56,10 @@ button{font-family:'Archivo',sans-serif;}
 .carousel-arrow.prev{left:10px;}
 .carousel-arrow.next{right:10px;}
 .bside-blocks{display:flex;flex-direction:column;}
-@media(max-width:760px){.bside-roots{order:-1;}}
+@media(max-width:760px){
+  .bside-roots{order:-1;}
+  #hero{min-height:auto!important;padding-top:80px!important;padding-bottom:56px!important;justify-content:flex-start!important;gap:clamp(28px,5vh,48px);}
+}
 
 .logos-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
 @media(max-width:700px){.logos-grid{grid-template-columns:repeat(3,1fr);}}
@@ -113,14 +116,14 @@ button{font-family:'Archivo',sans-serif;}
 </nav>
 
 <!-- HERO -->
-<section style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(98px,13vh,150px) clamp(20px,4vw,64px) 44px;overflow:hidden;">
+<section id="hero" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(98px,13vh,150px) clamp(20px,4vw,64px) 44px;overflow:hidden;">
   <div data-parallax data-speed="58" data-t="hero_backdrop" style="position:absolute;left:0;bottom:2.5vw;width:100%;text-align:center;font-family:'Anton';font-weight:400;font-size:clamp(52px,13vw,240px);line-height:.8;color:#EBE6DC;letter-spacing:.01em;pointer-events:none;z-index:0;white-space:nowrap;"></div>
   <div style="position:relative;z-index:2;display:flex;align-items:center;gap:11px;animation:fadeIn 1s ease both;">
     <span style="width:9px;height:9px;border-radius:50%;background:#FF4A1A;display:inline-block;"></span>
     <span style="font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;" data-t="hero_label"></span>
   </div>
   <div style="position:relative;z-index:2;">
-    <h1 data-parallax data-speed="-24" style="font-family:'Anton';font-weight:400;font-size:clamp(84px,21.5vw,292px);line-height:1.02;letter-spacing:-.02em;color:#0E0E0F;">
+    <h1 data-parallax data-speed="-24" style="font-family:'Anton';font-weight:400;font-size:clamp(92px,23.5vw,292px);line-height:1.02;letter-spacing:-.02em;color:#0E0E0F;">
       <span style="display:block;animation:fadeUp 1s cubic-bezier(.16,.8,.24,1) .05s both;">MICHAEL</span>
       <span style="display:block;animation:fadeUp 1s cubic-bezier(.16,.8,.24,1) .16s both;">MUÑOZ</span>
     </h1>
@@ -858,6 +861,12 @@ class Carousel {
       slide.appendChild(img);
       track.appendChild(slide);
     });
+    let _sx = 0;
+    track.addEventListener('touchstart', e=>{ _sx = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', e=>{
+      const dx = _sx - e.changedTouches[0].clientX;
+      if(Math.abs(dx) > 40){ clearInterval(this.timer); dx > 0 ? this.next() : this.goto((this.current-1+this.images.length)%this.images.length); }
+    }, {passive:true});
     this.el.appendChild(track);
     if(this.images.length > 1){
       const dots = document.createElement('div');
