@@ -51,6 +51,12 @@ button{font-family:'Archivo',sans-serif;}
 .carousel-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2;}
 .carousel-dot{width:6px;height:6px;border-radius:50%;border:none;cursor:pointer;transition:background .2s,transform .2s;}
 .carousel-dot.active{transform:scale(1.35);}
+.carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);border:none;cursor:pointer;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:3;transition:opacity .2s;padding:0;}
+.carousel-arrow:hover{opacity:.75;}
+.carousel-arrow.prev{left:10px;}
+.carousel-arrow.next{right:10px;}
+.bside-blocks{display:flex;flex-direction:column;}
+@media(max-width:760px){.bside-roots{order:-1;}}
 
 .logos-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
 @media(max-width:700px){.logos-grid{grid-template-columns:repeat(3,1fr);}}
@@ -114,7 +120,7 @@ button{font-family:'Archivo',sans-serif;}
     <span style="font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;" data-t="hero_label"></span>
   </div>
   <div style="position:relative;z-index:2;">
-    <h1 data-parallax data-speed="-24" style="font-family:'Anton';font-weight:400;font-size:clamp(62px,17.5vw,292px);line-height:1.02;letter-spacing:-.02em;color:#0E0E0F;">
+    <h1 data-parallax data-speed="-24" style="font-family:'Anton';font-weight:400;font-size:clamp(84px,21.5vw,292px);line-height:1.02;letter-spacing:-.02em;color:#0E0E0F;">
       <span style="display:block;animation:fadeUp 1s cubic-bezier(.16,.8,.24,1) .05s both;">MICHAEL</span>
       <span style="display:block;animation:fadeUp 1s cubic-bezier(.16,.8,.24,1) .16s both;">MUÑOZ</span>
     </h1>
@@ -339,7 +345,10 @@ button{font-family:'Archivo',sans-serif;}
   </div>
   <h2 data-reveal data-delay="60" id="side-title" style="font-family:'Anton';font-weight:400;font-size:clamp(48px,8vw,140px);line-height:.86;letter-spacing:-.02em;"></h2>
 
+  <div class="bside-blocks">
+
   <!-- Freelance -->
+  <div class="bside-freelance">
   <div data-reveal style="margin-top:clamp(44px,5vw,72px);margin-bottom:22px;display:flex;align-items:center;gap:10px;">
     <span style="width:22px;height:2px;background:#FF4A1A;"></span>
     <span style="font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2C2A24;" data-t="side_freelance_kicker"></span>
@@ -350,8 +359,10 @@ button{font-family:'Archivo',sans-serif;}
       <div id="carousel-freelance" class="carousel-wrap" style="border-radius:16px;aspect-ratio:1206/2360;"></div>
     </div>
   </div>
+  </div>
 
   <!-- Founder -->
+  <div class="bside-founder">
   <div data-reveal style="margin-top:clamp(56px,7vw,96px);margin-bottom:22px;display:flex;align-items:center;gap:10px;">
     <span style="width:22px;height:2px;background:#FF4A1A;"></span>
     <span style="font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2C2A24;" data-t="side_founder_kicker"></span>
@@ -378,8 +389,10 @@ button{font-family:'Archivo',sans-serif;}
       </div>
     </div>
   </div>
+  </div>
 
   <!-- Roots -->
+  <div class="bside-roots">
   <div data-reveal style="margin-top:clamp(56px,7vw,96px);margin-bottom:22px;display:flex;align-items:center;gap:10px;">
     <span style="width:22px;height:2px;background:#FF4A1A;"></span>
     <span style="font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2C2A24;" data-t="side_roots_kicker"></span>
@@ -389,6 +402,9 @@ button{font-family:'Archivo',sans-serif;}
     <p data-reveal style="flex:1 1 360px;min-width:280px;font-size:clamp(15.5px,1.6vw,18px);line-height:1.6;color:#4A463F;max-width:520px;" data-t="side_roots_b"></p>
     <div id="roots-list" style="flex:1 1 360px;min-width:280px;border-top:1px solid #DDD8CD;"></div>
   </div>
+  </div>
+
+  </div><!-- /bside-blocks -->
 </section>
 
 <!-- STACK -->
@@ -857,6 +873,24 @@ class Carousel {
         return d;
       });
       this.el.appendChild(dots);
+      const bg = this.dark ? 'rgba(255,255,255,0.18)' : 'rgba(0,0,0,0.14)';
+      const fg = this.dark ? '#fff' : '#1a1a1a';
+      const chevL = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${fg}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>`;
+      const chevR = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${fg}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`;
+      const btnPrev = document.createElement('button');
+      btnPrev.className = 'carousel-arrow prev';
+      btnPrev.innerHTML = chevL;
+      btnPrev.style.background = bg;
+      btnPrev.setAttribute('aria-label','Anterior');
+      btnPrev.onclick = ()=>{ clearInterval(this.timer); this.goto((this.current-1+this.images.length)%this.images.length); };
+      const btnNext = document.createElement('button');
+      btnNext.className = 'carousel-arrow next';
+      btnNext.innerHTML = chevR;
+      btnNext.style.background = bg;
+      btnNext.setAttribute('aria-label','Siguiente');
+      btnNext.onclick = ()=>{ clearInterval(this.timer); this.next(); };
+      this.el.appendChild(btnPrev);
+      this.el.appendChild(btnNext);
     }
   }
   goto(i){
