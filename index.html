@@ -676,8 +676,8 @@ function renderLists(t) {
   const stk = document.getElementById('stack-list');
   if(stk) stk.innerHTML = t.stack.map(g=>`
     <div data-reveal style="display:flex;gap:clamp(18px,4vw,60px);flex-wrap:wrap;padding:clamp(20px,2.4vw,30px) 0;border-bottom:1px solid #DDD8CD;">
-      <div style="flex:0 0 240px;min-width:170px;display:flex;align-items:flex-start;gap:12px;">
-        <span style="font-family:'Anton';font-size:15px;color:#FF4A1A;margin-top:3px;">${esc(g.no)}</span>
+      <div style="flex:0 0 240px;min-width:170px;display:flex;align-items:baseline;gap:12px;">
+        <span style="font-family:'Anton';font-size:15px;color:#FF4A1A;">${esc(g.no)}</span>
         <span style="font-size:clamp(16px,1.5vw,19px);font-weight:800;color:#15140F;letter-spacing:-.005em;">${esc(g.cat)}</span>
       </div>
       <div style="flex:1 1 340px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;">
