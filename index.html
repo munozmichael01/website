@@ -56,8 +56,6 @@ button{font-family:'Archivo',sans-serif;}
 .carousel-arrow:hover{opacity:.75;}
 .carousel-arrow.prev{left:10px;}
 .carousel-arrow.next{right:10px;}
-.bside-blocks{display:flex;flex-direction:column;}
-.bside-roots{order:-1;}
 @media(max-width:760px){
   #hero{min-height:auto!important;padding-top:80px!important;padding-bottom:56px!important;justify-content:flex-start!important;gap:clamp(28px,5vh,48px);}
 }
@@ -341,6 +339,19 @@ button{font-family:'Archivo',sans-serif;}
   </div>
 </section>
 
+<!-- PRIMEROS PASOS -->
+<section style="background:#F4F1EB;padding:clamp(64px,9vw,140px) clamp(20px,8vw,200px);">
+  <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(40px,5vw,64px);">
+    <span style="width:34px;height:2px;background:#FF4A1A;"></span>
+    <span style="font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#FF4A1A;" data-t="side_roots_kicker"></span>
+    <span style="margin-left:auto;font-family:'Anton';font-size:14px;letter-spacing:.03em;color:#9A958B;">2009 — 2012</span>
+  </div>
+  <div style="display:flex;gap:clamp(30px,5vw,70px);flex-wrap:wrap;align-items:flex-start;">
+    <p data-reveal style="flex:1 1 360px;min-width:280px;font-size:clamp(15.5px,1.6vw,18px);line-height:1.6;color:#4A463F;max-width:520px;" data-t="side_roots_b"></p>
+    <div id="roots-list" style="flex:1 1 360px;min-width:280px;border-top:1px solid #DDD8CD;"></div>
+  </div>
+</section>
+
 <!-- B-SIDE -->
 <section id="carab" style="background:#F4F1EB;padding:clamp(64px,9vw,140px) clamp(20px,8vw,200px);scroll-margin-top:60px;">
   <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:24px;">
@@ -349,10 +360,7 @@ button{font-family:'Archivo',sans-serif;}
   </div>
   <h2 data-reveal data-delay="60" id="side-title" style="font-family:'Anton';font-weight:400;font-size:clamp(48px,8vw,140px);line-height:.86;letter-spacing:-.02em;"></h2>
 
-  <div class="bside-blocks">
-
   <!-- Freelance -->
-  <div class="bside-freelance">
   <div data-reveal style="margin-top:clamp(44px,5vw,72px);margin-bottom:22px;display:flex;align-items:center;gap:10px;">
     <span style="width:22px;height:2px;background:#FF4A1A;"></span>
     <span style="font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2C2A24;" data-t="side_freelance_kicker"></span>
@@ -363,10 +371,8 @@ button{font-family:'Archivo',sans-serif;}
       <div id="carousel-freelance" class="carousel-wrap" style="border-radius:16px;aspect-ratio:1206/2360;"></div>
     </div>
   </div>
-  </div>
 
   <!-- Founder -->
-  <div class="bside-founder">
   <div data-reveal style="margin-top:clamp(56px,7vw,96px);margin-bottom:22px;display:flex;align-items:center;gap:10px;">
     <span style="width:22px;height:2px;background:#FF4A1A;"></span>
     <span style="font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2C2A24;" data-t="side_founder_kicker"></span>
@@ -393,22 +399,6 @@ button{font-family:'Archivo',sans-serif;}
       </div>
     </div>
   </div>
-  </div>
-
-  <!-- Roots -->
-  <div class="bside-roots">
-  <div data-reveal style="margin-top:clamp(56px,7vw,96px);margin-bottom:22px;display:flex;align-items:center;gap:10px;">
-    <span style="width:22px;height:2px;background:#FF4A1A;"></span>
-    <span style="font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#2C2A24;" data-t="side_roots_kicker"></span>
-    <span style="margin-left:auto;font-family:'Anton';font-size:14px;letter-spacing:.03em;color:#9A958B;">2009 — 2012</span>
-  </div>
-  <div style="display:flex;gap:clamp(30px,5vw,70px);flex-wrap:wrap;align-items:flex-start;">
-    <p data-reveal style="flex:1 1 360px;min-width:280px;font-size:clamp(15.5px,1.6vw,18px);line-height:1.6;color:#4A463F;max-width:520px;" data-t="side_roots_b"></p>
-    <div id="roots-list" style="flex:1 1 360px;min-width:280px;border-top:1px solid #DDD8CD;"></div>
-  </div>
-  </div>
-
-  </div><!-- /bside-blocks -->
 </section>
 
 <!-- STACK -->
