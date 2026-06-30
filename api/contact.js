@@ -3,7 +3,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, message } = req.body;
+  const { name, email, phone, message } = req.body;
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: 'Missing fields' });
@@ -17,13 +17,14 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Portfolio <onboarding@resend.dev>',
-        to: ['munozmichael01@gmail.com'],
+        from: 'Portfolio <info@michaelmunoz.co>',
+        to: ['info@michaelmunoz.co'],
         reply_to: email,
         subject: `Nuevo mensaje de ${name}`,
         html: `
           <p><strong>Nombre:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
+          ${phone ? `<p><strong>WhatsApp:</strong> ${phone}</p>` : ''}
           <p><strong>Mensaje:</strong></p>
           <p>${message.replace(/\n/g, '<br>')}</p>
         `,
