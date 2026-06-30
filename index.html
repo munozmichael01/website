@@ -41,6 +41,11 @@ button{font-family:'Archivo',sans-serif;}
 
 .contact-input{background:#0E0E0F;border:1px solid #2E2E2E;border-radius:8px;padding:14px 15px;color:#F4F1EB;font-size:16px;font-weight:500;outline:none;width:100%;transition:border-color .2s;}
 .contact-input:focus{border-color:#FF4A1A;}
+@media(max-width:760px){
+  .contact-text{order:1;}
+  .contact-form-wrap{order:2;}
+  .contact-links{order:3;}
+}
 .social-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #2E2E2E;border-radius:50%;color:#CFCABF;transition:border-color .2s,color .2s;}
 .social-icon:hover{border-color:#FF4A1A;color:#FF4A1A;}
 
@@ -432,21 +437,15 @@ button{font-family:'Archivo',sans-serif;}
 <!-- CONTACT -->
 <section id="contacto" style="background:#0E0E0F;color:#F4F1EB;padding:clamp(52px,7vw,110px) clamp(20px,4vw,64px);scroll-margin-top:60px;">
   <div style="display:flex;gap:clamp(40px,6vw,100px);flex-wrap:wrap;align-items:flex-start;">
-    <div style="flex:1 1 360px;min-width:280px;">
+    <div class="contact-text" style="flex:1 1 360px;min-width:280px;">
       <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:26px;">
         <span style="width:34px;height:2px;background:#FF4A1A;"></span>
         <span style="font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#FF4A1A;" data-t="contact_kicker"></span>
       </div>
       <h2 data-reveal data-delay="60" id="contact-title" style="font-family:'Anton';font-weight:400;font-size:clamp(54px,9vw,150px);line-height:.84;letter-spacing:-.02em;"></h2>
       <p data-reveal data-delay="120" style="margin-top:26px;font-size:clamp(16px,1.7vw,20px);line-height:1.55;color:#CFCABF;max-width:440px;" data-t="contact_body"></p>
-      <div data-reveal data-delay="180" style="margin-top:44px;font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#7E7A72;margin-bottom:18px;" data-t="contact_direct"></div>
-      <div style="display:flex;flex-direction:column;gap:2px;">
-        <a data-reveal href="mailto:munozmichael01@gmail.com" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid #262626;font-size:clamp(17px,2vw,24px);font-weight:700;">munozmichael01@gmail.com<span style="font-family:'Anton';color:#FF4A1A;">↗</span></a>
-        <a data-reveal data-delay="70" href="https://www.linkedin.com/in/michaelcwd" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid #262626;font-size:clamp(17px,2vw,24px);font-weight:700;">LinkedIn · /michaelcwd<span style="font-family:'Anton';color:#FF4A1A;">↗</span></a>
-        <a data-reveal data-delay="140" href="https://wa.me/34685601974" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid #262626;border-bottom:1px solid #262626;font-size:clamp(17px,2vw,24px);font-weight:700;">WhatsApp · +34 685 601 974<span style="font-family:'Anton';color:#FF4A1A;">↗</span></a>
-      </div>
     </div>
-    <div data-reveal data-delay="120" style="flex:1 1 380px;min-width:300px;background:#161616;border:1px solid #262626;border-radius:14px;padding:clamp(26px,3vw,40px);">
+    <div class="contact-form-wrap" data-reveal data-delay="120" style="flex:1 1 380px;min-width:300px;background:#161616;border:1px solid #262626;border-radius:14px;padding:clamp(26px,3vw,40px);">
       <div id="form-wrap">
         <form id="contact-form" style="display:flex;flex-direction:column;gap:18px;">
           <label style="display:flex;flex-direction:column;gap:8px;">
@@ -469,6 +468,14 @@ button{font-family:'Archivo',sans-serif;}
         <span style="display:inline-flex;width:64px;height:64px;border-radius:50%;background:#FF4A1A;align-items:center;justify-content:center;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span style="font-family:'Anton';font-size:30px;line-height:1;" data-t="form_success_t"></span>
         <span style="font-size:14.5px;color:#CFCABF;max-width:280px;line-height:1.5;" data-t="form_success_b"></span>
+      </div>
+    </div>
+    <div class="contact-links" style="flex:1 1 360px;min-width:280px;">
+      <div data-reveal style="font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#7E7A72;margin-bottom:18px;" data-t="contact_direct"></div>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <a data-reveal href="mailto:munozmichael01@gmail.com" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid #262626;font-size:clamp(17px,2vw,24px);font-weight:700;">munozmichael01@gmail.com<span style="font-family:'Anton';color:#FF4A1A;">↗</span></a>
+        <a data-reveal data-delay="70" href="https://www.linkedin.com/in/michaelcwd" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid #262626;font-size:clamp(17px,2vw,24px);font-weight:700;">LinkedIn · /michaelcwd<span style="font-family:'Anton';color:#FF4A1A;">↗</span></a>
+        <a data-reveal data-delay="140" href="https://wa.me/34685601974" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0;border-top:1px solid #262626;border-bottom:1px solid #262626;font-size:clamp(17px,2vw,24px);font-weight:700;">WhatsApp · +34 685 601 974<span style="font-family:'Anton';color:#FF4A1A;">↗</span></a>
       </div>
     </div>
   </div>
