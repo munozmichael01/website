@@ -947,11 +947,27 @@ class Carousel {
 function setupForm(){
   const form = document.getElementById('contact-form');
   if(!form) return;
-  form.addEventListener('submit', e=>{
+  form.addEventListener('submit', async e=>{
     e.preventDefault();
-    document.getElementById('form-wrap').style.display = 'none';
-    const s = document.getElementById('form-success');
-    s.style.display = 'flex';
+    const btn = document.getElementById('form-btn');
+    btn.disabled = true;
+    btn.style.opacity = '.6';
+    const data = Object.fromEntries(new FormData(form));
+    try {
+      const res = await fetch('/api/contact', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(data)
+      });
+      if(!res.ok) throw new Error();
+      document.getElementById('form-wrap').style.display = 'none';
+      const s = document.getElementById('form-success');
+      s.style.display = 'flex';
+    } catch {
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      alert('Algo salió mal. Por favor intenta de nuevo.');
+    }
   });
 }
 
