@@ -308,7 +308,7 @@ button{font-family:'Archivo',sans-serif;}
 
 <!-- COMWARE -->
 <section id="comware" style="position:relative;background:#0E0E0F;color:#F4F1EB;padding:clamp(70px,11vw,170px) clamp(20px,8vw,200px);scroll-margin-top:60px;overflow:hidden;">
-  <div data-parallax data-speed="50" style="position:absolute;right:-2vw;top:4vw;font-family:'Anton';font-size:clamp(120px,26vw,440px);line-height:.8;color:#171717;pointer-events:none;z-index:0;">CW</div>
+  <div data-parallax data-speed="50" style="position:absolute;right:-2vw;top:4vw;font-family:'Anton';font-size:clamp(120px,26vw,440px);line-height:.8;color:#171717;pointer-events:none;z-index:0;">CWD</div>
   <div style="position:relative;z-index:2;">
     <div data-reveal style="display:flex;align-items:center;gap:10px;margin-bottom:30px;">
       <span style="width:34px;height:2px;background:#FF4A1A;"></span>
@@ -844,8 +844,14 @@ class Carousel {
     this.current = 0;
     this.interval = opts.interval || 4000;
     this.dark = opts.dark || false;
+    this.timer = null;
     this.build();
-    if(images.length > 1) this.timer = setInterval(()=>this.next(), this.interval);
+    if(images.length > 1){
+      const obs = new IntersectionObserver(entries=>{
+        if(entries[0].isIntersecting){ this.timer = setInterval(()=>this.next(), this.interval); obs.disconnect(); }
+      },{threshold:0.3});
+      obs.observe(this.el);
+    }
   }
   build(){
     this.el.innerHTML = '';
