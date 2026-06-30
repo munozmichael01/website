@@ -63,6 +63,10 @@ button{font-family:'Archivo',sans-serif;}
 .carousel-arrow.next{right:10px;}
 @media(max-width:760px){
   #hero{min-height:auto!important;padding-top:80px!important;padding-bottom:56px!important;justify-content:flex-start!important;gap:clamp(28px,5vh,48px);}
+  .ch-col{display:contents;}
+  .ch-intro{order:1;}
+  .ch-mockup{order:2;}
+  .ch-metrics{order:3;}
 }
 
 .logos-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
@@ -201,81 +205,91 @@ button{font-family:'Archivo',sans-serif;}
 
 <!-- CH05 TURIJOBS -->
 <section style="background:#F4F1EB;padding:clamp(40px,5vw,80px) clamp(20px,4vw,64px);display:flex;gap:clamp(34px,5vw,80px);align-items:center;flex-wrap:wrap;">
-  <div style="flex:1 1 320px;min-width:270px;order:1;">
-    <div data-reveal style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
-      <span style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">05</span>
-      <span style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c1_tagline"></span>
-    </div>
-    <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(46px,6.5vw,104px);line-height:.9;letter-spacing:-.01em;">Turijobs</h3>
-    <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c1_role"></span> · Barcelona · 2021—2026</div>
-    <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#3D3A33;max-width:520px;" data-t="c1_summary"></p>
-    <div style="margin-top:38px;display:flex;gap:clamp(26px,4vw,56px);flex-wrap:wrap;">
-      <div data-reveal style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="3" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">3</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">M+</span></div>
-        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c1_m1"></div>
+  <div class="ch-col" style="flex:1 1 320px;min-width:270px;order:1;">
+    <div class="ch-intro">
+      <div data-reveal style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+        <span style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">05</span>
+        <span style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c1_tagline"></span>
       </div>
-      <div data-reveal data-delay="90" style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="80" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">80</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">K+</span></div>
-        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c1_m2"></div>
-      </div>
-      <div data-reveal data-delay="180" style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(26px,2.6vw,42px);color:#FF4A1A;">+</span><span data-count="20" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">20</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">%</span></div>
-        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:150px;line-height:1.35;" data-t="c1_m3"></div>
-      </div>
+      <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(46px,6.5vw,104px);line-height:.9;letter-spacing:-.01em;">Turijobs</h3>
+      <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c1_role"></span> · Barcelona · 2021—2026</div>
+      <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#3D3A33;max-width:520px;" data-t="c1_summary"></p>
     </div>
-    <div data-reveal data-delay="120" style="margin-top:22px;display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #E6E0D5;border-radius:100px;padding:9px 16px;">
-      <svg width="17" height="14" viewBox="0 0 24 20" fill="none"><path d="M2 16l6-6 4 3 8-9" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4h5v5" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span style="font-size:13.5px;font-weight:700;color:#2C2A24;" data-t="c1_growth"></span>
+    <div class="ch-metrics">
+      <div style="margin-top:38px;display:flex;gap:clamp(26px,4vw,56px);flex-wrap:wrap;">
+        <div data-reveal style="display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="3" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">3</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">M+</span></div>
+          <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c1_m1"></div>
+        </div>
+        <div data-reveal data-delay="90" style="display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="80" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">80</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">K+</span></div>
+          <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c1_m2"></div>
+        </div>
+        <div data-reveal data-delay="180" style="display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(26px,2.6vw,42px);color:#FF4A1A;">+</span><span data-count="20" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">20</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">%</span></div>
+          <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:150px;line-height:1.35;" data-t="c1_m3"></div>
+        </div>
+      </div>
+      <div data-reveal data-delay="120" style="margin-top:22px;display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #E6E0D5;border-radius:100px;padding:9px 16px;">
+        <svg width="17" height="14" viewBox="0 0 24 20" fill="none"><path d="M2 16l6-6 4 3 8-9" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4h5v5" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size:13.5px;font-weight:700;color:#2C2A24;" data-t="c1_growth"></span>
+      </div>
+      <div id="c1-tags" style="margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;"></div>
     </div>
-    <div id="c1-tags" style="margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;"></div>
   </div>
-  <div data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;order:2;"><img src="Mockups/Turijobs-t.png" alt="Turijobs" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
+  <div class="ch-mockup" data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;order:2;"><img src="Mockups/Turijobs-t.png" alt="Turijobs" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
 </section>
 
 <!-- CH04 UNIVERSIDAD EUROPEA -->
 <section style="background:#F4F1EB;padding:clamp(40px,5vw,80px) clamp(20px,4vw,64px);display:flex;gap:clamp(34px,5vw,80px);align-items:center;flex-wrap:wrap;">
-  <div data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;order:2;"><img src="Mockups/Universidad%20europea%20online-t.png" alt="Universidad Europea" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
-  <div style="flex:1 1 320px;min-width:270px;order:1;">
-    <div data-reveal style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
-      <span style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">04</span>
-      <span style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c2_tagline"></span>
-    </div>
-    <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(40px,5.6vw,88px);line-height:.9;letter-spacing:-.01em;">Universidad<br>Europea</h3>
-    <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c2_role"></span> · Madrid · 2020—2021</div>
-    <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#3D3A33;max-width:520px;" data-t="c2_summary"></p>
-    <div style="margin-top:38px;display:flex;gap:clamp(26px,4vw,56px);flex-wrap:wrap;">
-      <div data-reveal style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(26px,2.6vw,42px);color:#FF4A1A;">×</span><span data-count="3" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">3</span></div>
-        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:150px;line-height:1.35;" data-t="c2_m1"></div>
+  <div class="ch-mockup" data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;order:2;"><img src="Mockups/Universidad%20europea%20online-t.png" alt="Universidad Europea" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
+  <div class="ch-col" style="flex:1 1 320px;min-width:270px;order:1;">
+    <div class="ch-intro">
+      <div data-reveal style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+        <span style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">04</span>
+        <span style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c2_tagline"></span>
       </div>
-      <div data-reveal data-delay="90" style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(30px,3vw,48px);color:#FF4A1A;">€</span><span data-count="800" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">800</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">K</span></div>
-        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c2_m2"></div>
-      </div>
-      <div data-reveal data-delay="180" style="display:flex;flex-direction:column;">
-        <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="5" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">5</span></div>
-        <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c2_m3"></div>
-      </div>
+      <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(40px,5.6vw,88px);line-height:.9;letter-spacing:-.01em;">Universidad<br>Europea</h3>
+      <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c2_role"></span> · Madrid · 2020—2021</div>
+      <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#3D3A33;max-width:520px;" data-t="c2_summary"></p>
     </div>
-    <div data-reveal data-delay="120" style="margin-top:22px;display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #E6E0D5;border-radius:100px;padding:9px 16px;">
-      <svg width="17" height="14" viewBox="0 0 24 20" fill="none"><path d="M2 16l6-6 4 3 8-9" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4h5v5" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span style="font-size:13.5px;font-weight:700;color:#2C2A24;" data-t="c2_growth"></span>
+    <div class="ch-metrics">
+      <div style="margin-top:38px;display:flex;gap:clamp(26px,4vw,56px);flex-wrap:wrap;">
+        <div data-reveal style="display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(26px,2.6vw,42px);color:#FF4A1A;">×</span><span data-count="3" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">3</span></div>
+          <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:150px;line-height:1.35;" data-t="c2_m1"></div>
+        </div>
+        <div data-reveal data-delay="90" style="display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(30px,3vw,48px);color:#FF4A1A;">€</span><span data-count="800" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">800</span><span style="font-family:'Anton';font-size:clamp(22px,2.4vw,38px);color:#FF4A1A;">K</span></div>
+          <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c2_m2"></div>
+        </div>
+        <div data-reveal data-delay="180" style="display:flex;flex-direction:column;">
+          <div style="display:flex;align-items:baseline;gap:2px;"><span data-count="5" style="font-family:'Anton';font-size:clamp(44px,5vw,80px);line-height:.78;">5</span></div>
+          <div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;" data-t="c2_m3"></div>
+        </div>
+      </div>
+      <div data-reveal data-delay="120" style="margin-top:22px;display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid #E6E0D5;border-radius:100px;padding:9px 16px;">
+        <svg width="17" height="14" viewBox="0 0 24 20" fill="none"><path d="M2 16l6-6 4 3 8-9" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4h5v5" stroke="#FF4A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size:13.5px;font-weight:700;color:#2C2A24;" data-t="c2_growth"></span>
+      </div>
+      <div id="c2-tags" style="margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;"></div>
     </div>
-    <div id="c2-tags" style="margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;"></div>
   </div>
 </section>
 
 <!-- CH03 BIZUM -->
-<section style="background:#F4F1EB;padding:clamp(40px,5vw,80px) clamp(20px,4vw,64px);">
-  <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:30px;">
-    <span data-reveal style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">03</span>
-    <span data-reveal data-delay="40" style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c3_tagline"></span>
-  </div>
-  <div style="display:flex;gap:clamp(34px,5vw,80px);flex-wrap:wrap;align-items:center;">
-    <div style="flex:1 1 320px;min-width:270px;">
+<section style="background:#F4F1EB;padding:clamp(40px,5vw,80px) clamp(20px,4vw,64px);display:flex;gap:clamp(34px,5vw,80px);align-items:center;flex-wrap:wrap;">
+  <div class="ch-col" style="flex:1 1 320px;min-width:270px;order:1;">
+    <div class="ch-intro">
+      <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+        <span data-reveal style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">03</span>
+        <span data-reveal data-delay="40" style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c3_tagline"></span>
+      </div>
       <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(58px,8vw,128px);line-height:.86;letter-spacing:-.01em;">Bizum</h3>
       <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c3_role"></span> · Madrid · 2020—2021</div>
       <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.7vw,20px);line-height:1.6;color:#3D3A33;max-width:540px;" data-t="c3_summary"></p>
+    </div>
+    <div class="ch-metrics">
       <div style="margin-top:30px;display:flex;gap:clamp(26px,4vw,52px);flex-wrap:wrap;">
         <div data-reveal style="display:flex;flex-direction:column;"><span style="font-family:'Anton';font-size:clamp(48px,5.5vw,88px);line-height:.78;color:#FF4A1A;">#1</span><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:190px;line-height:1.35;" data-t="c3_m1"></div></div>
         <div data-reveal data-delay="90" style="display:flex;flex-direction:column;"><div style="display:flex;align-items:baseline;gap:1px;"><span data-count="30" style="font-family:'Anton';font-size:clamp(48px,5.5vw,88px);line-height:.78;">30</span><span style="font-family:'Anton';font-size:clamp(24px,2.6vw,40px);color:#FF4A1A;">M</span></div><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:190px;line-height:1.35;" data-t="c3_m2"></div></div>
@@ -286,27 +300,31 @@ button{font-family:'Archivo',sans-serif;}
         <div data-reveal data-delay="180" style="display:flex;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid #DDD8CD;"><span style="font-family:'Anton';font-size:20px;color:#FF4A1A;min-width:34px;">03</span><span style="font-size:clamp(17px,1.8vw,22px);font-weight:700;color:#1A1813;" data-t="c3_p3"></span></div>
       </div>
     </div>
-    <div data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;"><img src="Mockups/Bizum-t.png" alt="Bizum" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
   </div>
+  <div class="ch-mockup" data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;order:2;"><img src="Mockups/Bizum-t.png" alt="Bizum" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
 </section>
 
 <!-- CH02 MELIWARE -->
 <section style="background:#F4F1EB;padding:clamp(40px,5vw,80px) clamp(20px,4vw,64px);display:flex;gap:clamp(34px,5vw,80px);align-items:center;flex-wrap:wrap;">
-  <div data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;order:2;"><img src="Mockups/Mercadolibre-t.png" alt="MercadoLibre" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
-  <div style="flex:1 1 320px;min-width:270px;order:1;">
-    <div data-reveal style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
-      <span style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">02</span>
-      <span style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c4_tagline"></span>
+  <div class="ch-mockup" data-parallax data-reveal data-delay="120" data-speed="-55" style="flex:1 1 365px;min-width:280px;order:2;"><img src="Mockups/Mercadolibre-t.png" alt="MercadoLibre" style="width:100%;height:auto;display:block;filter:drop-shadow(0 26px 44px rgba(14,14,15,.16));"></div>
+  <div class="ch-col" style="flex:1 1 320px;min-width:270px;order:1;">
+    <div class="ch-intro">
+      <div data-reveal style="display:flex;align-items:baseline;gap:16px;margin-bottom:14px;">
+        <span style="font-family:'Anton';font-size:clamp(44px,5.5vw,92px);color:#FF4A1A;line-height:.8;">02</span>
+        <span style="font-size:12.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7A766E;" data-t="c4_tagline"></span>
+      </div>
+      <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(46px,6.2vw,100px);line-height:.9;letter-spacing:-.01em;">MeliWare <span style="font-size:clamp(13px,1.3vw,18px);font-weight:700;letter-spacing:.02em;color:#9A958B;vertical-align:middle;">× MercadoLibre</span></h3>
+      <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c4_role"></span> · Caracas · 2016—2018</div>
+      <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#3D3A33;max-width:520px;" data-t="c4_summary"></p>
     </div>
-    <h3 data-reveal data-delay="60" style="font-family:'Anton';font-weight:400;font-size:clamp(46px,6.2vw,100px);line-height:.9;letter-spacing:-.01em;">MeliWare <span style="font-size:clamp(13px,1.3vw,18px);font-weight:700;letter-spacing:.02em;color:#9A958B;vertical-align:middle;">× MercadoLibre</span></h3>
-    <div data-reveal data-delay="100" style="margin-top:12px;font-size:13.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#9A958B;"><span data-t="c4_role"></span> · Caracas · 2016—2018</div>
-    <p data-reveal data-delay="150" style="margin-top:24px;font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#3D3A33;max-width:520px;" data-t="c4_summary"></p>
-    <div style="margin-top:36px;display:flex;gap:clamp(22px,4vw,52px);flex-wrap:wrap;">
-      <div data-reveal style="display:flex;flex-direction:column;"><span style="font-family:'Anton';font-size:clamp(40px,4.6vw,74px);line-height:.82;color:#FF4A1A;">1ª</span><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:160px;line-height:1.35;" data-t="c4_m1"></div></div>
-      <div data-reveal data-delay="90" style="display:flex;flex-direction:column;"><span style="font-family:'Anton';font-size:clamp(40px,4.6vw,74px);line-height:.82;">&lt;2s</span><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:160px;line-height:1.35;" data-t="c4_m2"></div></div>
-      <div data-reveal data-delay="180" style="display:flex;flex-direction:column;"><div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(26px,2.6vw,42px);color:#FF4A1A;">+</span><span data-count="25" style="font-family:'Anton';font-size:clamp(40px,4.6vw,74px);line-height:.82;">25</span><span style="font-family:'Anton';font-size:clamp(22px,2.2vw,34px);color:#FF4A1A;">%</span></div><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:160px;line-height:1.35;" data-t="c4_m3"></div></div>
+    <div class="ch-metrics">
+      <div style="margin-top:36px;display:flex;gap:clamp(22px,4vw,52px);flex-wrap:wrap;">
+        <div data-reveal style="display:flex;flex-direction:column;"><span style="font-family:'Anton';font-size:clamp(40px,4.6vw,74px);line-height:.82;color:#FF4A1A;">1ª</span><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:160px;line-height:1.35;" data-t="c4_m1"></div></div>
+        <div data-reveal data-delay="90" style="display:flex;flex-direction:column;"><span style="font-family:'Anton';font-size:clamp(40px,4.6vw,74px);line-height:.82;">&lt;2s</span><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:160px;line-height:1.35;" data-t="c4_m2"></div></div>
+        <div data-reveal data-delay="180" style="display:flex;flex-direction:column;"><div style="display:flex;align-items:baseline;gap:1px;"><span style="font-family:'Anton';font-size:clamp(26px,2.6vw,42px);color:#FF4A1A;">+</span><span data-count="25" style="font-family:'Anton';font-size:clamp(40px,4.6vw,74px);line-height:.82;">25</span><span style="font-family:'Anton';font-size:clamp(22px,2.2vw,34px);color:#FF4A1A;">%</span></div><div style="margin-top:8px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#6B6760;max-width:160px;line-height:1.35;" data-t="c4_m3"></div></div>
+      </div>
+      <div id="c4-tags" style="margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;"></div>
     </div>
-    <div id="c4-tags" style="margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;"></div>
   </div>
 </section>
 
