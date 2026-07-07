@@ -22,6 +22,7 @@
   --border-soft:#E2DDD2;
   --dark:#0E0E0F;
   --dark-border:#2E2E2E;
+  --card:#FBFAF6;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;}
@@ -29,7 +30,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Archivo',sans-serif;line
 img{display:block;max-width:100%;}
 a{color:inherit;text-decoration:none;}
 ::selection{background:var(--accent);color:#fff;}
-h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:-.01em;line-height:.94;}
+h1,h2,h3,h4{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:-.01em;line-height:.94;}
 
 /* ---------- GATE ---------- */
 #gate{position:fixed;inset:0;z-index:1000;background:var(--dark);color:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px;}
@@ -51,9 +52,8 @@ h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:-.01em;li
 .gate-shake{animation:shake .38s;}
 @keyframes shake{0%,100%{transform:translateX(0);}20%,60%{transform:translateX(-8px);}40%,80%{transform:translateX(8px);}}
 
-/* ---------- APP (revealed) ---------- */
+/* ---------- APP ---------- */
 #app{display:none;}
-body.unlocked{overflow-x:hidden;}
 body.unlocked #gate{display:none;}
 body.unlocked #app{display:block;animation:fadeIn .6s ease;}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
@@ -65,13 +65,12 @@ body.unlocked #app{display:block;animation:fadeIn .6s ease;}
 .topbar .mark-mm .dot{color:var(--accent);}
 .topbar .mark-name{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);opacity:.85;}
 @media(max-width:480px){.topbar .mark-name{display:none;}}
-.btn-download{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--bg);border:none;border-radius:100px;padding:11px 20px;font-family:'Archivo';font-size:13px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background .2s,transform .2s;}
+.btn-download{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--bg);border:none;border-radius:100px;padding:11px 20px;font-family:'Archivo';font-size:13px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background .2s,transform .2s;white-space:nowrap;}
 .btn-download:hover{background:var(--accent);transform:translateY(-1px);}
 .btn-download svg{width:15px;height:15px;}
 
 /* ---------- LAYOUT ---------- */
 .wrap{max-width:920px;margin:0 auto;padding:0 clamp(20px,5vw,40px);}
-section{position:relative;}
 .kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--kicker);}
 .kicker::before{content:"";width:9px;height:9px;background:var(--accent);display:inline-block;}
 .confid-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--accent);color:var(--accent);border-radius:100px;padding:6px 14px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;}
@@ -82,56 +81,136 @@ section{position:relative;}
 .hero .eyebrow{color:#A7A297;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
 .hero h1{color:var(--bg);font-size:clamp(48px,10vw,104px);line-height:.9;}
 .hero h1 .accent{color:var(--accent);}
-.hero .sub{color:#CFC9BE;font-size:clamp(17px,2vw,21px);font-weight:500;max-width:38ch;line-height:1.5;}
+.hero .sub{color:#CFC9BE;font-size:clamp(17px,2vw,21px);font-weight:500;max-width:40ch;line-height:1.5;}
 .hero .meta{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:34px;font-size:13px;font-weight:600;color:#9A958B;letter-spacing:.02em;}
 
-/* GENERIC SECTION */
-.sec{padding:clamp(56px,8vw,104px) 0;}
+/* SECTIONS */
+.sec{padding:clamp(56px,8vw,100px) 0;}
 .sec--alt{background:#EFEBE2;}
 .sec-head{margin-bottom:clamp(28px,4vw,44px);}
-.sec-head h2{font-size:clamp(38px,6vw,74px);margin-top:18px;}
+.sec-head h2{font-size:clamp(38px,6vw,72px);margin-top:18px;}
+.sec-head .sub{margin-top:16px;font-size:clamp(15px,1.5vw,17.5px);color:var(--muted);max-width:60ch;line-height:1.6;}
 .lead{font-size:clamp(20px,2.4vw,28px);font-weight:700;line-height:1.32;letter-spacing:-.01em;color:#15140F;max-width:30ch;}
 .body-text{font-size:clamp(16px,1.5vw,18px);line-height:1.68;color:var(--muted);}
-.body-text+.body-text{margin-top:20px;}
+.body-text+.body-text{margin-top:18px;}
 .body-text strong{color:var(--ink);font-weight:700;}
 .hl{color:var(--ink);font-weight:700;box-shadow:inset 0 -.5em 0 rgba(255,74,26,.14);}
 
-/* BUILD CARDS */
+/* BENEFIT CARDS */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:clamp(28px,4vw,40px);}
+@media(max-width:640px){.cards{grid-template-columns:1fr;}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;}
+.card .ic{width:32px;height:32px;color:var(--accent);margin-bottom:16px;}
+.card h4{font-family:'Archivo';font-weight:800;font-size:17px;line-height:1.25;letter-spacing:-.01em;color:var(--ink);margin-bottom:9px;}
+.card p{font-size:14.5px;color:var(--muted);line-height:1.55;}
+
+/* STANDARDS CHIPS */
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:clamp(24px,3vw,36px);}
+@media(max-width:720px){.chips{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:460px){.chips{grid-template-columns:1fr;}}
+.chip{display:flex;gap:13px;align-items:flex-start;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:17px;}
+.chip .ic{color:var(--accent);flex:0 0 auto;width:22px;height:22px;margin-top:1px;}
+.chip b{display:block;font-size:14.5px;font-weight:800;color:var(--ink);letter-spacing:-.01em;margin-bottom:3px;}
+.chip span{font-size:12.5px;color:var(--muted2);line-height:1.45;}
+.saving-note{margin-top:18px;font-size:13.5px;color:var(--muted2);}
+.saving-note strong{color:var(--accent);font-weight:800;}
+
+/* BUILD ITEMS */
 .build-item{border-top:1px solid var(--border);padding:clamp(34px,5vw,52px) 0;}
 .build-item:last-child{border-bottom:1px solid var(--border);}
-.build-head{display:flex;gap:clamp(18px,3vw,34px);align-items:baseline;}
-.build-num{font-family:'Anton';font-size:clamp(38px,6vw,74px);color:var(--accent);line-height:.8;flex:0 0 auto;}
-.build-title{font-family:'Anton';font-size:clamp(26px,3.6vw,44px);line-height:.98;letter-spacing:-.01em;}
-.build-body{margin-top:22px;padding-left:0;}
-@media(min-width:720px){.build-body{padding-left:calc(clamp(38px,6vw,74px) + clamp(18px,3vw,34px));}}
-.entregables-label{margin-top:30px;font-size:11.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--kicker);margin-bottom:16px;}
-.checklist{list-style:none;display:grid;gap:11px;}
-.checklist li{position:relative;padding-left:30px;font-size:15.5px;line-height:1.5;color:var(--muted);}
-.checklist li::before{content:"";position:absolute;left:4px;top:9px;width:8px;height:8px;background:var(--accent);}
+.build-head{display:flex;gap:clamp(16px,3vw,30px);align-items:baseline;}
+.build-num{font-family:'Anton';font-size:clamp(34px,5vw,60px);color:var(--accent);line-height:.8;flex:0 0 auto;}
+.build-title{font-family:'Anton';font-size:clamp(25px,3.4vw,42px);line-height:.98;letter-spacing:-.01em;}
+.build-body{margin-top:22px;}
+@media(min-width:720px){.build-body{padding-left:calc(clamp(34px,5vw,60px) + clamp(16px,3vw,30px));}}
+.entregables-label{margin-top:28px;font-size:11.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--kicker);margin-bottom:15px;}
+.checklist{list-style:none;display:grid;gap:10px;}
+.checklist li{position:relative;padding-left:28px;font-size:15px;line-height:1.5;color:var(--muted);}
+.checklist li::before{content:"";position:absolute;left:3px;top:8px;width:8px;height:8px;background:var(--accent);}
+.checklist li em{font-style:normal;color:var(--muted2);font-size:13.5px;}
 .checklist li code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#E7E2D8;padding:2px 7px;border-radius:5px;color:#3A372F;}
+.checklist.two{grid-template-columns:1fr 1fr;gap:10px 26px;}
+@media(max-width:620px){.checklist.two{grid-template-columns:1fr;}}
 
-/* PRICING */
-.price-block{margin-top:clamp(30px,4vw,48px);}
-.price-block h3{font-family:'Anton';font-size:clamp(20px,2.4vw,28px);color:var(--ink);margin-bottom:18px;}
-.ptable{width:100%;border-collapse:collapse;font-size:15.5px;}
-.ptable td{padding:15px 4px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;}
-.ptable td.price{text-align:right;white-space:nowrap;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;}
-.ptable tr.total td{border-bottom:none;border-top:2px solid var(--ink);padding-top:18px;font-family:'Anton';font-size:clamp(18px,2vw,22px);color:var(--ink);letter-spacing:.01em;}
-.ptable tr.total td.price{color:var(--accent);}
+/* PROTOTYPE CALLOUT */
+.proto{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;background:var(--dark);color:var(--bg);border-radius:16px;padding:22px 26px;margin-top:26px;}
+.proto .pt{font-size:14.5px;color:#CFC9BE;max-width:44ch;line-height:1.5;}
+.proto .pt b{color:var(--bg);font-weight:800;}
+.proto a{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;border-radius:100px;padding:12px 22px;font-size:13.5px;font-weight:800;letter-spacing:.02em;white-space:nowrap;transition:opacity .2s;}
+.proto a:hover{opacity:.88;}
+.subnote{margin-top:22px;padding:16px 18px;background:rgba(0,0,0,.03);border-left:3px solid var(--border);border-radius:0 8px 8px 0;font-size:14px;color:var(--muted2);line-height:1.55;}
+.subnote b{color:var(--ink);font-weight:700;}
+
+/* A/B COMPARISON CARDS (web) */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(24px,3vw,36px);}
+@media(max-width:680px){.vs{grid-template-columns:1fr;}}
+.opt{position:relative;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px 24px;}
+.opt.rec{border:2px solid var(--accent);}
+.opt .badge-rec{position:absolute;top:-11px;left:24px;background:var(--accent);color:#fff;font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:100px;}
+.opt .opt-tag{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+.opt h4{font-family:'Archivo';font-weight:800;font-size:18px;letter-spacing:-.01em;color:var(--ink);margin:8px 0 14px;line-height:1.2;}
+.opt .opt-desc{font-size:14px;color:var(--muted);line-height:1.55;margin-bottom:18px;}
+.opt dl{display:grid;gap:11px;font-size:13.5px;}
+.opt dl .row{display:flex;justify-content:space-between;gap:14px;padding-bottom:11px;border-bottom:1px solid var(--border);}
+.opt dl .row:last-child{border-bottom:none;padding-bottom:0;}
+.opt dt{color:var(--muted2);font-weight:600;flex:0 0 auto;}
+.opt dd{color:var(--ink);font-weight:700;text-align:right;}
+.opt .prc{font-family:'Anton';font-size:20px;color:var(--ink);}
+
+/* PRICE TILES */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px;}
+@media(max-width:620px){.tiles{grid-template-columns:1fr;}}
+.tile{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 22px;}
+.tile.rec{border:2px solid var(--accent);}
+.tile .tl{font-size:12.5px;font-weight:700;letter-spacing:.03em;color:var(--muted2);text-transform:uppercase;}
+.tile .big{font-family:'Anton';font-size:clamp(26px,3.4vw,34px);color:var(--ink);line-height:1;margin-top:12px;}
+.tile.rec .big{color:var(--accent);}
+.tile .tl-sub{font-size:13px;color:var(--muted2);margin-top:10px;line-height:1.45;}
+
+.mini-table{width:100%;border-collapse:collapse;font-size:15px;margin-top:8px;}
+.mini-table td{padding:13px 2px;border-bottom:1px solid var(--border);color:var(--muted);}
+.mini-table td.price{text-align:right;font-weight:700;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
+.mini-table tr.sub td{border-bottom:none;border-top:2px solid var(--ink);padding-top:15px;font-family:'Anton';font-size:19px;color:var(--ink);}
+.mini-table tr.sub td.price{color:var(--accent);}
+
+.badge-inline{display:inline-flex;align-items:center;gap:9px;margin-top:22px;background:rgba(255,74,26,.1);border:1px solid rgba(255,74,26,.3);color:#C23A14;border-radius:100px;padding:9px 16px;font-size:13.5px;font-weight:700;}
 .pay-note{margin-top:18px;font-size:14px;color:var(--muted2);font-weight:500;}
 .pay-note strong{color:var(--ink);font-weight:700;}
 
+/* SUPPORT TILES */
+.support-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;}
+@media(max-width:680px){.support-tiles{grid-template-columns:1fr;}}
+.support-tiles .stile{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;}
+.support-tiles .stile h4{font-family:'Archivo';font-weight:800;font-size:16px;color:var(--ink);margin-bottom:6px;}
+.support-tiles .stile .p{font-family:'Anton';font-size:22px;color:var(--accent);margin-bottom:10px;}
+.support-tiles .stile p{font-size:13px;color:var(--muted2);line-height:1.5;}
+.support-total{display:flex;align-items:baseline;gap:12px;margin-top:20px;padding-top:18px;border-top:2px solid var(--ink);}
+.support-total .lbl{font-family:'Anton';font-size:22px;color:var(--ink);}
+.support-total .amt{font-family:'Anton';font-size:26px;color:var(--accent);margin-left:auto;}
+
+/* OPS COST CALLOUT */
+.ops{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px;margin-top:8px;}
+.ops .ops-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;border-bottom:1px solid var(--border);padding-bottom:16px;margin-bottom:16px;}
+.ops .ops-top .t{font-family:'Archivo';font-weight:800;font-size:16px;color:var(--ink);}
+.ops .ops-top .v{font-family:'Anton';font-size:26px;color:var(--ink);}
+.ops .ops-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px 24px;}
+@media(max-width:560px){.ops .ops-grid{grid-template-columns:1fr;}}
+.ops .ops-grid .oi{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted);}
+.ops .ops-grid .oi b{color:var(--ink);font-weight:700;white-space:nowrap;}
+
 /* TIMELINE */
-.timeline{display:grid;gap:0;margin-top:clamp(28px,4vw,44px);}
-.tl-row{display:grid;grid-template-columns:1fr;gap:6px;padding:22px 0;border-bottom:1px solid var(--border);}
+.timeline{margin-top:clamp(24px,3vw,36px);}
+.tl-row{display:grid;grid-template-columns:1fr;gap:6px;padding:20px 0;border-bottom:1px solid var(--border);}
 @media(min-width:640px){.tl-row{grid-template-columns:1.4fr .8fr 1.4fr;gap:20px;align-items:baseline;}}
-.tl-phase{font-family:'Anton';font-size:clamp(19px,2.2vw,26px);line-height:1;}
-.tl-dur{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--kicker);}
-.tl-milestone{font-size:15px;color:var(--muted);}
+.tl-phase{font-family:'Anton';font-size:clamp(18px,2.2vw,25px);line-height:1;}
+.tl-dur{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--kicker);}
+.tl-milestone{font-size:14.5px;color:var(--muted);}
 .tl-milestone::before{content:"→ ";color:var(--accent);font-weight:700;}
 .tl-row.launch .tl-phase{color:var(--accent);}
+.phase-label{margin-top:clamp(30px,4vw,44px);margin-bottom:6px;font-family:'Archivo';font-weight:800;font-size:15px;letter-spacing:.02em;color:var(--ink);}
+.phase-label:first-of-type{margin-top:0;}
 
-/* DARK PANEL (por qué yo) */
+/* DARK PANEL */
 .panel-dark{background:var(--dark);color:var(--bg);}
 .panel-dark .sec-head h2{color:var(--bg);}
 .panel-dark .body-text{color:#CFC9BE;}
@@ -156,80 +235,94 @@ section{position:relative;}
 .foot .contact .lbl{color:#7A756B;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:11px;margin-right:8px;}
 .foot .fine{margin-top:36px;padding-top:22px;border-top:1px solid var(--dark-border);font-size:12px;color:#7A756B;letter-spacing:.04em;}
 
+/* PRINT / SCREEN TOGGLES */
+.print-only{display:none;}
 .print-doc-head{display:none;}
 
-/* ================= PRINT / PDF (versión adaptada) ================= */
+/* full administrative tables (used in print-only + on-screen where noted) */
+.ptable{width:100%;border-collapse:collapse;font-size:15px;}
+.ptable caption{text-align:left;font-family:'Anton';font-size:18px;color:var(--ink);padding-bottom:10px;}
+.ptable th{text-align:left;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);padding:8px 8px 8px 0;border-bottom:1px solid var(--ink);}
+.ptable td{padding:12px 8px 12px 0;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;}
+.ptable td.price{text-align:right;white-space:nowrap;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;}
+.ptable tr.total td{border-bottom:none;border-top:2px solid var(--ink);padding-top:14px;font-family:'Anton';font-size:18px;color:var(--ink);}
+.ptable tr.total td.price{color:var(--accent);}
+
+/* ================= PRINT / PDF (versión completa · administrativa) ================= */
 @media print{
-  @page{size:A4;margin:16mm 15mm;}
-  html,body{background:#fff!important;color:#000!important;font-size:11pt;line-height:1.5;}
+  @page{size:A4;margin:15mm 14mm;}
+  html,body{background:#fff!important;color:#000!important;font-size:10.5pt;line-height:1.5;}
   #gate,.topbar,.btn-download{display:none!important;}
-  #app{display:block!important;}
-  body.unlocked #app{animation:none!important;}
+  #app{display:block!important;animation:none!important;}
+  .no-print{display:none!important;}
+  .print-only{display:block!important;}
   .wrap{max-width:none;padding:0;margin:0;}
   section,.sec,.hero,.panel-dark,.sec--alt,.foot{background:#fff!important;color:#000!important;padding:0!important;}
-  h1,h2,h3{color:#000!important;}
+  h1,h2,h3,h4{color:#000!important;}
 
-  /* Document header */
   .hero{display:none!important;}
-  .print-doc-head{display:block!important;border-bottom:2pt solid #000;padding-bottom:10pt;margin-bottom:20pt;}
-  .print-doc-head .pd-title{font-family:'Anton';font-size:22pt;line-height:1;}
-  .print-doc-head .pd-sub{font-size:10pt;font-weight:700;color:#000;margin-top:6pt;letter-spacing:.02em;}
+  .print-doc-head{display:block!important;border-bottom:2pt solid #000;padding-bottom:10pt;margin-bottom:18pt;}
+  .print-doc-head .pd-title{font-family:'Anton';font-size:21pt;line-height:1;}
+  .print-doc-head .pd-sub{font-size:10pt;font-weight:700;margin-top:6pt;}
   .print-doc-head .pd-confid{font-size:8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#666;margin-top:4pt;}
 
-  .sec{padding:0!important;margin-bottom:16pt!important;}
-  .sec-head{margin-bottom:10pt!important;}
-  .sec-head h2{font-size:16pt!important;margin-top:4pt!important;border-bottom:1pt solid #ccc;padding-bottom:4pt;}
+  .sec{padding:0!important;margin-bottom:15pt!important;}
+  .sec-head{margin-bottom:9pt!important;}
+  .sec-head h2{font-size:15pt!important;margin-top:3pt!important;border-bottom:1pt solid #ccc;padding-bottom:4pt;}
+  .sec-head .sub{font-size:9.5pt!important;color:#333!important;margin-top:5pt!important;}
   .kicker{color:#000!important;font-size:8pt;}
   .kicker::before{background:#000!important;width:7px;height:7px;}
   .lead{font-size:12.5pt!important;max-width:none;color:#000!important;}
-  .body-text{font-size:10.5pt!important;color:#111!important;}
+  .body-text{font-size:10pt!important;color:#111!important;}
   .body-text strong,.hl{color:#000!important;box-shadow:none!important;font-weight:700;}
 
-  /* Keep blocks intact across page breaks */
-  .build-item,.price-block,.tl-row,.step,table,tr,.sec-head{page-break-inside:avoid;}
-  h2,h3{page-break-after:avoid;}
+  .build-item,.tl-row,.step,table,tr,.sec-head,.ptable{page-break-inside:avoid;}
+  h2,h3,h4{page-break-after:avoid;}
 
-  .build-item{border-top:1pt solid #ccc!important;padding:10pt 0!important;}
+  .build-item{border-top:1pt solid #ccc!important;padding:9pt 0!important;}
   .build-item:last-child{border-bottom:1pt solid #ccc!important;}
-  .build-head{gap:10pt;}
-  .build-num{font-size:16pt!important;color:#000!important;}
-  .build-title{font-size:14pt!important;}
-  .build-body{padding-left:26pt!important;margin-top:8pt!important;}
-  .entregables-label{color:#666!important;font-size:8pt!important;margin-top:12pt!important;}
-  .checklist li{color:#111!important;font-size:10pt!important;padding-left:16pt;}
-  .checklist li::before{background:#000!important;width:5px;height:5px;top:7px;}
+  .build-head{gap:9pt;}
+  .build-num{font-size:15pt!important;color:#000!important;}
+  .build-title{font-size:13.5pt!important;}
+  .build-body{padding-left:24pt!important;margin-top:7pt!important;}
+  .entregables-label{color:#666!important;font-size:8pt!important;margin-top:10pt!important;}
+  .checklist li{color:#111!important;font-size:9.5pt!important;padding-left:15pt;}
+  .checklist li::before{background:#000!important;width:5px;height:5px;top:6px;}
+  .checklist li em{color:#555!important;}
   .checklist li code{background:#eee!important;}
+  .checklist.two{grid-template-columns:1fr 1fr!important;}
 
-  /* Inversión */
-  #inversion{page-break-before:always;}
-  .price-block h3{font-size:13pt!important;color:#000!important;}
-  .ptable{font-size:10pt!important;}
-  .ptable td{padding:6pt 4pt!important;border-bottom:.5pt solid #bbb!important;color:#111!important;}
+  .print-only .subnote,.subnote{background:#f4f4f2!important;border-left:3pt solid #999!important;font-size:9pt!important;color:#333!important;padding:7pt 9pt!important;}
+  .subnote b{color:#000!important;}
+
+  .print-block{page-break-before:always;}
+
+  .ptable{font-size:9.5pt!important;margin-bottom:10pt;}
+  .ptable caption{font-size:12pt!important;color:#000!important;}
+  .ptable th{color:#333!important;border-bottom:1pt solid #000!important;padding:5pt 6pt 5pt 0!important;font-size:7.5pt!important;}
+  .ptable td{padding:5pt 6pt 5pt 0!important;border-bottom:.5pt solid #bbb!important;color:#111!important;}
   .ptable td.price{color:#000!important;}
-  .ptable tr.total td{border-top:1.5pt solid #000!important;font-size:12pt!important;color:#000!important;}
+  .ptable tr.total td{border-top:1.5pt solid #000!important;font-size:11pt!important;color:#000!important;}
   .ptable tr.total td.price{color:#000!important;}
-  .pay-note{font-size:9.5pt!important;color:#333!important;}
 
-  /* Cronograma */
-  .timeline{margin-top:8pt!important;}
-  .tl-row{grid-template-columns:1.4fr .8fr 1.4fr!important;gap:12pt!important;padding:7pt 0!important;border-bottom:.5pt solid #bbb!important;}
-  .tl-phase{font-size:12pt!important;color:#000!important;}
-  .tl-dur{color:#555!important;font-size:8.5pt!important;}
-  .tl-milestone{font-size:9.5pt!important;color:#111!important;}
+  .tl-row{grid-template-columns:1.4fr .8fr 1.4fr!important;gap:12pt!important;padding:6pt 0!important;border-bottom:.5pt solid #bbb!important;}
+  .tl-phase{font-size:11pt!important;color:#000!important;}
+  .tl-dur{color:#555!important;font-size:8pt!important;}
+  .tl-milestone{font-size:9pt!important;color:#111!important;}
   .tl-milestone::before{color:#000!important;}
+  .phase-label{font-size:10pt!important;color:#000!important;margin-top:12pt!important;}
 
-  /* Steps */
-  .step{padding:7pt 0!important;border-bottom:.5pt solid #bbb!important;}
-  .step-num{font-size:14pt!important;color:#000!important;}
-  .step p{font-size:10.5pt!important;color:#000!important;}
+  .step{padding:6pt 0!important;border-bottom:.5pt solid #bbb!important;}
+  .step-num{font-size:13pt!important;color:#000!important;}
+  .step p{font-size:10pt!important;color:#000!important;}
 
-  /* Footer */
-  .foot{border-top:2pt solid #000;padding-top:12pt!important;margin-top:16pt!important;page-break-inside:avoid;}
-  .foot .name{font-size:16pt!important;color:#000!important;}
+  .foot{border-top:2pt solid #000;padding-top:12pt!important;margin-top:14pt!important;page-break-inside:avoid;}
+  .foot .name{font-size:15pt!important;color:#000!important;}
   .foot .role{color:#333!important;}
   .foot .contact{color:#111!important;font-size:9.5pt!important;}
   .foot .contact a,.foot .contact .lbl{color:#111!important;}
   .foot .fine{color:#666!important;border-top:.5pt solid #ccc;}
+  .pay-note{font-size:9pt!important;color:#333!important;}
 }
 </style>
 </head>
@@ -275,7 +368,7 @@ section{position:relative;}
     <div class="pd-confid">Confidencial · Acceso restringido</div>
   </div>
 
-  <!-- HERO -->
+  <!-- HERO (web) -->
   <header class="hero">
     <div class="wrap">
       <div class="eyebrow">Propuesta Digital · E-Commerce</div>
@@ -288,19 +381,109 @@ section{position:relative;}
     </div>
   </header>
 
-  <!-- EL MOMENTO -->
+  <!-- EL MOMENTO (shared) -->
   <section class="sec">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">El momento</span>
-      </div>
+      <div class="sec-head"><span class="kicker">El momento</span></div>
       <p class="lead">Alkosto tiene lo que la mayoría de competidores digitales no pueden comprar.</p>
       <p class="body-text" style="margin-top:26px;">Una red física establecida, un catálogo de <strong>1,200 productos</strong> y la confianza construida en años de operación presencial. El ecommerce no reemplaza eso. <span class="hl">Lo amplifica.</span></p>
       <p class="body-text">Esta propuesta no es un sitio web. Es la digitalización de una operación omnicanal que convierte tus sucursales de <strong>Las Mercedes</strong> y <strong>Chacao</strong> en el motor de entrega más rápido y confiable del mercado venezolano para electrodomésticos premium.</p>
     </div>
   </section>
 
-  <!-- QUÉ VOY A CONSTRUIR -->
+  <!-- LO QUE VAS A GANAR -->
+  <section class="sec sec--alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">El impacto</span>
+        <h2>Lo que tu negocio va a ganar</h2>
+      </div>
+
+      <!-- web: cards -->
+      <div class="cards no-print">
+        <div class="card">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <h4>Ventas más allá del horario de tienda</h4>
+          <p>Vendes 24/7. Quien ve una nevera en Instagram a las 11pm la compra en ese momento, sin esperar a que alguien responda el WhatsApp.</p>
+        </div>
+        <div class="card">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+          <h4>Tus sucursales como ventaja digital</h4>
+          <p>Las Mercedes y Chacao se vuelven centros de entrega rápida: click &amp; collect en horas, no días. Ningún competidor solo-online lo replica.</p>
+        </div>
+        <div class="card">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="6"/><rect x="12" y="7" width="3" height="10"/><rect x="17" y="13" width="3" height="4"/></svg>
+          <h4>Datos reales para decidir</h4>
+          <p>Sabrás qué productos generan interés pero no venden, dónde abandona el cliente y qué método de pago convierte más. Vale más que cualquier intuición.</p>
+        </div>
+        <div class="card">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          <h4>Pagos adaptados a Venezuela</h4>
+          <p>Pago Móvil, Zelle, transferencia y tarjeta internacional desde el lanzamiento, con financiamiento en cuotas para el ticket alto.</p>
+        </div>
+      </div>
+
+      <!-- print: full text -->
+      <div class="print-only">
+        <p class="body-text"><strong>Ventas más allá del horario de tienda.</strong> Tu ecommerce vende las 24 horas, los 7 días. Un cliente que ve una nevera en Instagram a las 11pm puede comprarla en ese momento, sin esperar al día siguiente ni depender de que alguien responda el WhatsApp.</p>
+        <p class="body-text"><strong>Tus sucursales como ventaja competitiva digital.</strong> Las tiendas de Las Mercedes y Chacao se convierten en centros de entrega rápida. Click &amp; collect en horas, no días. Ningún competidor puramente online puede replicar eso.</p>
+        <p class="body-text"><strong>Datos reales para decisiones de negocio.</strong> Por primera vez sabrás qué productos generan interés pero no se venden, en qué paso del proceso de compra abandona el cliente y qué método de pago convierte más. Eso vale más que cualquier intuición.</p>
+        <p class="body-text"><strong>Métodos de pago adaptados al mercado venezolano.</strong> Pago Móvil, Zelle, transferencia bancaria y tarjeta internacional integrados desde el lanzamiento, con opciones de financiamiento en cuotas disponibles para electrodomésticos de ticket alto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTÁNDARES INCLUIDOS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Incluido de serie</span>
+        <h2>Estándares de trabajo</h2>
+        <p class="sub">Todo el desarrollo incluye esto como estándar, sin coste adicional.</p>
+      </div>
+
+      <!-- web: chips -->
+      <div class="chips no-print">
+        <div class="chip">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3a8 8 0 1 0 8 8"/><path d="M21 3l-9 9"/><path d="M15 3h6v6"/></svg>
+          <div><b>Benchmark de competencia</b><span>Referencias locales (Daka, Multimax, SoyTechno) e internacionales (PcComponentes, MediaMarkt, El Corte Inglés).</span></div>
+        </div>
+        <div class="chip">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <div><b>SEO técnico base</b><span>Keywords en assets, imágenes WebP optimizadas, jerarquía h1–h6, URLs limpias, sitemap e indexación.</span></div>
+        </div>
+        <div class="chip">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div><b>Seguridad Shopify</b><span>SSL, PCI DSS nivel 1, CDN global con protección DDoS e infraestructura gestionada.</span></div>
+        </div>
+        <div class="chip">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
+          <div><b>Responsive mobile-first</b><span>Validado en dispositivos reales, no solo en simuladores.</span></div>
+        </div>
+        <div class="chip">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>
+          <div><b>GA4 + Search Console</b><span>Configurados con ecommerce enhanced desde el lanzamiento.</span></div>
+        </div>
+        <div class="chip">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <div><b>Looker Studio dashboard</b><span>Métricas clave del negocio desde el día uno.</span></div>
+        </div>
+      </div>
+      <p class="saving-note no-print">La seguridad gestionada de Shopify representa un <strong>ahorro real de $25–300 USD/mes</strong> frente a plataformas de código abierto.</p>
+
+      <!-- print: full list -->
+      <ul class="checklist print-only">
+        <li><strong>Benchmark de competencia</strong> antes del diseño, con dos niveles de análisis: referencias locales (Daka, Multimax, SoyTechno) como contexto de competencia directa y estándar del mercado venezolano; y referencias internacionales (PcComponentes, MediaMarkt, El Corte Inglés) como fuente de buenas prácticas y tendencias globales aplicables al catálogo y la experiencia de compra.</li>
+        <li><strong>SEO técnico base</strong>: nomenclatura de assets con keywords, imágenes en formato WebP optimizadas en peso, estructura jerárquica de títulos h1-h6, URLs limpias y semánticas, sitemap e indexación en motores de búsqueda y herramientas de IA.</li>
+        <li><strong>Seguridad incluida en Shopify</strong>: SSL certificado y renovación automática, cumplimiento PCI DSS nivel 1, CDN global con protección DDoS e infraestructura gestionada. Sin necesidad de contratar soluciones de seguridad externas adicionales, lo que representa un ahorro real de $25–300 USD/mes frente a plataformas de código abierto.</li>
+        <li><strong>Responsive mobile-first</strong>: validado en dispositivos reales, no solo en simuladores.</li>
+        <li><strong>GA4 + Search Console</strong>: configurados con ecommerce enhanced desde el lanzamiento.</li>
+        <li><strong>Looker Studio dashboard</strong>: con métricas clave del negocio desde el día uno.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EL ALCANCE -->
   <section class="sec sec--alt">
     <div class="wrap">
       <div class="sec-head">
@@ -308,15 +491,19 @@ section{position:relative;}
         <h2>Qué voy a construir</h2>
       </div>
 
-      <!-- 1 -->
+      <!-- 01 -->
       <div class="build-item">
-        <div class="build-head">
-          <span class="build-num">01</span>
-          <h3 class="build-title">Estrategia y UX/UI personalizada</h3>
-        </div>
+        <div class="build-head"><span class="build-num">01</span><h3 class="build-title">Estrategia y UX/UI personalizada</h3></div>
         <div class="build-body">
-          <p class="body-text">Antes de diseñar una sola pantalla, documentamos juntos las respuestas a las preguntas que determinan si el ecommerce funciona o no: cómo está estructurado el inventario hoy, en qué etapa está Odoo, qué métodos de pago ya usan, qué significa éxito al final del primer año.</p>
-          <p class="body-text">El resultado es un <strong>prototipo navegable de alta fidelidad</strong> que puedes mostrar a tu equipo antes de escribir una línea de código. Cada decisión de UX está justificada en comportamiento de usuario real para la categoría de electrodomésticos, no en preferencias estéticas.</p>
+          <p class="body-text">Antes de diseñar una sola pantalla, documentamos juntos las preguntas que determinan si el ecommerce funciona: cómo está estructurado el inventario hoy, en qué etapa está Odoo, qué métodos de pago ya usan, qué significa éxito al final del primer año.</p>
+          <p class="body-text">Cada decisión de UX está justificada en comportamiento de usuario real para la categoría de electrodomésticos, no en preferencias estéticas.</p>
+
+          <div class="proto no-print">
+            <div class="pt"><b>Ya hay un prototipo navegable de alta fidelidad.</b> Explóralo antes de la primera reunión — es la base de la conversación de discovery, no el resultado final.</div>
+            <a href="https://alkosto.vercel.app" target="_blank" rel="noopener">Ver prototipo ↗</a>
+          </div>
+          <p class="body-text print-only">Como parte de este proceso, ya se ha desarrollado un prototipo navegable de alta fidelidad que puedes explorar antes de la primera reunión en: <strong>alkosto.vercel.app</strong>. Este prototipo es la base de la conversación de discovery, no el resultado final.</p>
+
           <div class="entregables-label">Entregables</div>
           <ul class="checklist">
             <li>Sesión de discovery documentada (formulario + acta)</li>
@@ -326,135 +513,279 @@ section{position:relative;}
         </div>
       </div>
 
-      <!-- 2 -->
+      <!-- 02 -->
       <div class="build-item">
-        <div class="build-head">
-          <span class="build-num">02</span>
-          <h3 class="build-title">Desarrollo Shopify + integración Odoo</h3>
-        </div>
+        <div class="build-head"><span class="build-num">02</span><h3 class="build-title">Desarrollo Shopify + integración Odoo</h3></div>
         <div class="build-body">
-          <p class="body-text">La plataforma recomendada es <strong>Shopify</strong> como front-end de la tienda, integrada con <strong>Odoo</strong> como back-office. Esta combinación ofrece lo mejor de los dos mundos: el checkout más optimizado para conversión del mercado, velocidad y confiabilidad de clase mundial del lado de Shopify, y la gestión de inventario multi-sucursal, facturación y operaciones del lado de Odoo.</p>
-          <p class="body-text">La integración entre ambos sistemas es <span class="hl">la pieza más crítica del proyecto</span>. No es "conectar dos herramientas": es garantizar que cuando una lavadora se vende en el ecommerce, el stock de Las Mercedes y Chacao se actualiza en tiempo real, la factura se genera automáticamente en Odoo y el pedido queda registrado sin intervención manual. Esto elimina el riesgo de vender un producto sin stock y reduce la carga operativa del equipo de tienda.</p>
+          <p class="body-text">La plataforma recomendada es <strong>Shopify</strong> como front-end, integrada con <strong>Odoo</strong> como back-office: el checkout más optimizado para conversión del lado de Shopify, y la gestión de inventario multi-sucursal, facturación y operaciones del lado de Odoo.</p>
+          <p class="body-text">La integración entre ambos es <span class="hl">la pieza más crítica del proyecto</span>. No es "conectar dos herramientas": cuando una lavadora se vende, el stock de Las Mercedes y Chacao se actualiza en tiempo real, la factura se genera automáticamente en Odoo y el pedido queda registrado sin intervención manual. Elimina el riesgo de vender sin stock y reduce la carga operativa del equipo de tienda.</p>
+
+          <div class="subnote"><b>Facturación digital (SENIAT):</b> si Odoo tiene activo el módulo Unidigital, cada pedido genera automáticamente una factura digital válida. Configurar Unidigital dentro de Odoo es responsabilidad del equipo de implementación de Odoo; la integración Shopify-Odoo garantiza que los datos del pedido lleguen correctamente para que esa factura se genere sin errores.</div>
+
+          <p class="body-text print-only" style="margin-top:16px;"><strong>Shopify incluye por defecto, sin coste adicional:</strong> SSL certificado y renovación automática; cumplimiento PCI DSS nivel 1 para procesamiento de pagos; CDN global con protección básica contra DDoS; e infraestructura gestionada, sin servidores que mantener ni parches de seguridad manuales.</p>
+
           <div class="entregables-label">Entregables</div>
-          <ul class="checklist">
+          <ul class="checklist two">
             <li>Home, categorías, ficha de producto, carrito y checkout completo</li>
             <li>Disponibilidad de stock en tiempo real por sucursal</li>
-            <li>Click &amp; collect: el cliente elige retirar en Las Mercedes o Chacao</li>
+            <li>Click &amp; collect: retirar en Las Mercedes o Chacao</li>
             <li>Precios en USD con equivalencia en Bs. a tasa BCV del día</li>
-            <li>Integración Cashea desde el día de lanzamiento</li>
-            <li>Checkout con Pago Móvil, Zelle, transferencia bancaria y tarjeta internacional</li>
-            <li>Botón de rescate WhatsApp en carrito y checkout</li>
+            <li>Checkout con Pago Móvil, Zelle, transferencia y tarjeta internacional</li>
+            <li>Cashea <em>(opcional · recomendado: el financiamiento en cuotas más usado en Venezuela para ticket alto; ya integrado por Daka, Damasco y SoyTechno)</em></li>
+            <li>Botón de consulta WhatsApp en carrito y checkout</li>
             <li>Responsive optimizado mobile-first</li>
-            <li>Integración Odoo (inventario, pedidos, facturación)</li>
+            <li>Integración Odoo: inventario, pedidos y facturación</li>
           </ul>
         </div>
       </div>
 
-      <!-- 3 -->
+      <!-- 03 -->
       <div class="build-item">
-        <div class="build-head">
-          <span class="build-num">03</span>
-          <h3 class="build-title">Catálogo de 1,200 SKUs optimizado a SEO</h3>
-        </div>
+        <div class="build-head"><span class="build-num">03</span><h3 class="build-title">Catálogo e importación masiva</h3></div>
         <div class="build-body">
-          <p class="body-text">Cada ficha de producto no es solo una descripción: es un <strong>activo de búsqueda orgánica</strong>. Para electrodomésticos en Venezuela eso significa incluir los argumentos de venta que el mercado local necesita: tecnología Inverter para protección de voltaje, capacidad en metros cuadrados para aires acondicionados, voltaje compatible con la red venezolana.</p>
-          <div class="entregables-label">Entregables</div>
+          <p class="body-text">El catálogo de 1,200 SKUs requiere contenido estructurado antes de importarse: imágenes, fichas técnicas, descripciones y atributos filtrables. Ese contenido lo provee el equipo de Alkosto directamente con fabricantes y distribuidores, la fuente de mayor calidad disponible.</p>
+          <p class="body-text">Para electrodomésticos en Venezuela, las fichas deben incluir los argumentos que el mercado local necesita: tecnología Inverter para protección de voltaje, capacidad en m² para aires acondicionados, voltaje compatible con la red venezolana.</p>
+          <div class="entregables-label">Incluido</div>
           <ul class="checklist">
-            <li>Descripción única optimizada para SEO por cada SKU</li>
-            <li>Especificaciones técnicas estructuradas y consistentes</li>
-            <li>Atributos filtrables (marca, tipo, voltaje, capacidad)</li>
-            <li>URLs limpias con keywords: <code>/neveras/lg/nevera-no-frost-inverter-400l</code></li>
+            <li>Diseño de la plantilla de importación masiva (CSV estructurado para Shopify)</li>
+            <li>Arquitectura del catálogo: campos obligatorios, nomenclatura de atributos, variantes y categorías</li>
+            <li>Capacitación al equipo de marketing para producir descripciones con criterios SEO</li>
+            <li>Importación masiva y validación de los 1,200 SKUs en la plataforma</li>
+          </ul>
+          <div class="entregables-label">Complementario · a cotizar en discovery si es necesario</div>
+          <ul class="checklist">
+            <li>Redacción de descripciones optimizadas a SEO</li>
+            <li>Búsqueda y selección de imágenes de producto</li>
+            <li>Normalización y estructuración de fichas técnicas</li>
           </ul>
         </div>
       </div>
 
-      <!-- 4 -->
+      <!-- 04 -->
       <div class="build-item">
-        <div class="build-head">
-          <span class="build-num">04</span>
-          <h3 class="build-title">Integración Cashea</h3>
-        </div>
+        <div class="build-head"><span class="build-num">04</span><h3 class="build-title">Analytics y reporting</h3></div>
         <div class="build-body">
-          <p class="body-text">Cashea no es opcional en este mercado. Es <span class="hl">el diferenciador de conversión más inmediato</span> disponible hoy en Venezuela para electrodomésticos de ticket alto. Daka, Damasco y SoyTechno ya lo tienen. No tenerlo en el lanzamiento es perder ventas desde el día uno.</p>
-          <p class="body-text">La integración incluye la presentación de opciones de cuotas directamente en la ficha de producto y en el checkout, con el flujo completo de aprobación dentro de la misma experiencia de compra.</p>
-        </div>
-      </div>
-
-      <!-- 5 -->
-      <div class="build-item">
-        <div class="build-head">
-          <span class="build-num">05</span>
-          <h3 class="build-title">Analytics: setup y seguimiento mensual</h3>
-        </div>
-        <div class="build-body">
-          <p class="body-text"><strong>Setup inicial incluido en el desarrollo:</strong></p>
-          <ul class="checklist" style="margin-top:14px;">
-            <li>GA4 con ecommerce enhanced (eventos de producto, embudos de checkout, conversiones por método de pago)</li>
-            <li>Google Search Console vinculada</li>
-            <li>Looker Studio dashboard con métricas clave del negocio</li>
-            <li>Segmentación por sucursal y por categoría de producto</li>
-          </ul>
-          <p class="body-text" style="margin-top:24px;"><strong>Reporte ejecutivo mensual incluido en la retención:</strong> cada mes recibes un documento de una página con los números que importan y lo que significan para el negocio, no solo una captura de pantalla de GA4:</p>
-          <ul class="checklist" style="margin-top:14px;">
+          <p class="body-text"><strong>Setup inicial incluido en el desarrollo:</strong> GA4 con ecommerce enhanced (eventos de producto, embudos de checkout, conversiones por método de pago), Google Search Console vinculada, Looker Studio dashboard y segmentación por sucursal y categoría.</p>
+          <div class="entregables-label">Reporte ejecutivo mensual · en el seguimiento post-lanzamiento</div>
+          <ul class="checklist two">
             <li>Tráfico total y por canal (orgánico, redes, directo)</li>
             <li>Tasa de conversión general y por categoría</li>
             <li>Productos más vistos vs. más comprados (gap de conversión)</li>
             <li>Abandono de carrito por paso del checkout</li>
-            <li>Revenue por método de pago (peso de Cashea vs. Zelle vs. Pago Móvil)</li>
+            <li>Revenue por método de pago</li>
             <li>Comportamiento click &amp; collect vs. envío a domicilio</li>
+            <li>Una recomendación accionable cada mes basada en los datos</li>
           </ul>
-          <p class="body-text" style="margin-top:20px;">Esto convierte los datos en decisiones: qué producto necesita mejor ficha, en qué paso del checkout hay fricción, qué método de pago hay que promover más.</p>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="build-item">
+        <div class="build-head"><span class="build-num">05</span><h3 class="build-title">Asistente de atención al cliente</h3></div>
+        <div class="build-body">
+          <p class="body-text">Alkosto ya gestiona consultas por WhatsApp, Instagram y en tienda. El ecommerce multiplica ese volumen sin multiplicar el equipo — solo si se automatiza bien desde el inicio. Dos aproximaciones, con propósitos e inversión distintos:</p>
+
+          <!-- web: comparison cards -->
+          <div class="vs no-print">
+            <div class="opt">
+              <span class="opt-tag">Opción A</span>
+              <h4>Automatización omnicanal</h4>
+              <p class="opt-desc">Centraliza todos los canales (web, WhatsApp, Instagram, email) en un inbox único y automatiza respuestas frecuentes con workflows predefinidos.</p>
+              <dl>
+                <div class="row"><dt>Costo op./mes</dt><dd><span class="prc">$50–200</span></dd></div>
+                <div class="row"><dt>Implementación</dt><dd>2 semanas</dd></div>
+                <div class="row"><dt>Pro</dt><dd style="text-align:right;font-weight:600;color:var(--muted);">Rápido, bajo riesgo, 24/7</dd></div>
+                <div class="row"><dt>Contra</dt><dd style="text-align:right;font-weight:600;color:var(--muted);">No recomienda catálogo</dd></div>
+              </dl>
+            </div>
+            <div class="opt rec">
+              <span class="badge-rec">Recomendado</span>
+              <span class="opt-tag">Opción B</span>
+              <h4>Chat híbrido con IA y catálogo</h4>
+              <p class="opt-desc">Widget único que combina respuestas rápidas por reglas con un motor de IA que busca y recomienda productos del catálogo en lenguaje natural.</p>
+              <dl>
+                <div class="row"><dt>Costo op./mes</dt><dd><span class="prc">$15–40</span></dd></div>
+                <div class="row"><dt>Implementación</dt><dd>4 semanas</dd></div>
+                <div class="row"><dt>Pro</dt><dd style="text-align:right;font-weight:600;color:var(--muted);">Convierte el chat en ventas</dd></div>
+                <div class="row"><dt>Contra</dt><dd style="text-align:right;font-weight:600;color:var(--muted);">Mayor inversión inicial</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <!-- print: full table -->
+          <table class="ptable print-only" style="margin-top:10px;">
+            <thead><tr><th>Aspecto</th><th>Opción A · Omnicanal</th><th>Opción B · Chat IA + catálogo</th></tr></thead>
+            <tbody>
+              <tr><td>Qué hace</td><td>Centraliza todos los canales (web, WhatsApp, Instagram, email) en un inbox único y automatiza respuestas frecuentes con workflows predefinidos</td><td>Widget único en el ecommerce que combina respuestas rápidas por reglas con un motor de IA que busca y recomienda productos del catálogo en lenguaje natural</td></tr>
+              <tr><td>Costo operativo/mes</td><td>$50–200 USD (plataforma a cargo del cliente)</td><td>$15–40 USD (hosting + IA, a cargo del cliente)</td></tr>
+              <tr><td>Implementación</td><td>2 semanas</td><td>4 semanas</td></tr>
+              <tr><td>Pros</td><td>Rápido de lanzar, bajo riesgo técnico, centraliza canales, 24/7 para lo repetitivo</td><td>Diferenciador validado por evidencia de mercado, convierte el chat en canal de ventas, costo marginal a escala</td></tr>
+              <tr><td>Contras</td><td>No busca ni recomienda productos del catálogo; el árbol de decisión requiere mantenimiento</td><td>Mayor inversión inicial, requiere integración Shopify-Odoo estable, mantenimiento técnico continuo</td></tr>
+            </tbody>
+          </table>
+
+          <div class="subnote">Ambas opciones se implementan en la fase post-lanzamiento, a partir de la <b>semana 13</b>, una vez que la integración Shopify-Odoo está validada y el catálogo completo está cargado.</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- INVERSIÓN -->
-  <section class="sec" id="inversion">
+  <section class="sec">
     <div class="wrap">
       <div class="sec-head">
         <span class="kicker">Inversión</span>
-        <h2>Números claros</h2>
+        <h2>Desarrollo — pago único</h2>
       </div>
 
-      <div class="price-block">
-        <h3>Desarrollo — pago único</h3>
+      <!-- web: mini table + tiles -->
+      <div class="no-print">
+        <table class="mini-table">
+          <tbody>
+            <tr><td>Estrategia, discovery y UX/UI personalizada</td><td class="price">$1,900</td></tr>
+            <tr><td>Desarrollo Shopify + integración Odoo</td><td class="price">$3,200</td></tr>
+            <tr><td>Importación masiva de 1,200 SKUs</td><td class="price">$600</td></tr>
+            <tr class="sub"><td>Subtotal desarrollo</td><td class="price">$5,700 USD</td></tr>
+          </tbody>
+        </table>
+
+        <p class="phase-label" style="margin-top:34px;">Asistente de atención — opcional, elige una</p>
+        <div class="tiles">
+          <div class="tile"><div class="tl">Opción A · Omnicanal</div><div class="big">$400–500</div><div class="tl-sub">Fee de implementación</div></div>
+          <div class="tile rec"><div class="tl">Opción B · Chat IA</div><div class="big">$800–1,200</div><div class="tl-sub">Fee de implementación</div></div>
+          <div class="tile"><div class="tl">Sin asistente</div><div class="big">—</div><div class="tl-sub">Se añade luego si se desea</div></div>
+        </div>
+
+        <p class="phase-label" style="margin-top:34px;">Total desarrollo según opción</p>
+        <div class="tiles">
+          <div class="tile"><div class="tl">Sin asistente</div><div class="big">$5,700</div><div class="tl-sub">USD</div></div>
+          <div class="tile"><div class="tl">Con Opción A</div><div class="big">$6,100–6,200</div><div class="tl-sub">USD</div></div>
+          <div class="tile"><div class="tl">Con Opción B</div><div class="big">$6,500–6,900</div><div class="tl-sub">USD</div></div>
+        </div>
+
+        <div class="badge-inline">✓ Incluye 2 meses de soporte post-lanzamiento — valor $1,800 USD, sin coste</div>
+        <p class="pay-note"><strong>Esquema de pago:</strong> 60% al inicio · 40% a la entrega. Fees de asistente a confirmar según lo acordado en discovery.</p>
+      </div>
+
+      <!-- print: full tables + clause -->
+      <div class="print-only">
         <table class="ptable">
           <tbody>
             <tr><td>Estrategia, discovery y UX/UI personalizada</td><td class="price">$1,900</td></tr>
             <tr><td>Desarrollo Shopify + integración Odoo</td><td class="price">$3,200</td></tr>
-            <tr><td>Catálogo 1,200 SKUs con copywriting SEO</td><td class="price">$2,400</td></tr>
-            <tr><td>Integración Cashea</td><td class="price">$400</td></tr>
-            <tr><td>Setup GA4 + Looker Studio dashboard</td><td class="price">$350</td></tr>
-            <tr class="total"><td>Total desarrollo</td><td class="price">$8,250 USD</td></tr>
+            <tr><td>Importación masiva de 1,200 SKUs</td><td class="price">$600</td></tr>
+            <tr class="total"><td>Subtotal desarrollo</td><td class="price">$5,700 USD</td></tr>
           </tbody>
         </table>
-        <p class="pay-note"><strong>Esquema de pago:</strong> 50% al inicio · 25% en semana 6 · 25% al lanzamiento.</p>
+        <table class="ptable"><caption>Asistente de atención — opcional, elige una opción</caption>
+          <thead><tr><th>Opción</th><th style="text-align:right;">Fee de implementación</th></tr></thead>
+          <tbody>
+            <tr><td>Opción A · Automatización omnicanal con workflows</td><td class="price">$400–500 USD</td></tr>
+            <tr><td>Opción B · Chat conversacional con IA integrado al catálogo</td><td class="price">$800–1,200 USD</td></tr>
+            <tr><td>Sin asistente</td><td class="price">—</td></tr>
+          </tbody>
+        </table>
+        <table class="ptable"><caption>Total desarrollo según opción elegida</caption>
+          <tbody>
+            <tr><td>Sin asistente</td><td class="price">$5,700 USD</td></tr>
+            <tr><td>Con Opción A</td><td class="price">$6,100–6,200 USD</td></tr>
+            <tr><td>Con Opción B</td><td class="price">$6,500–6,900 USD</td></tr>
+          </tbody>
+        </table>
+        <p class="pay-note"><strong>Incluye 2 meses de soporte y seguimiento post-lanzamiento (valor $1,800 USD) sin coste adicional.</strong> Fee de implementación del asistente a confirmar según definiciones acordadas en la sesión de discovery.</p>
+        <p class="pay-note"><strong>Esquema de pago:</strong> 60% al inicio · 40% a la entrega.</p>
+        <div class="subnote">Si el proyecto se retrasa por causas externas al desarrollo (entrega de contenido de catálogo, implementación de Odoo por parte del proveedor u otros terceros) y nuestra parte está completada al alcanzar la semana 12, se cobrará el 40% restante con el compromiso de finalizar lo pendiente una vez los responsables desbloqueen las tareas.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOPORTE MENSUAL -->
+  <section class="sec sec--alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Recurrente</span>
+        <h2>Soporte y seguimiento</h2>
+        <p class="sub">Mensual, a partir del mes 3. Los tres servicios se contratan en conjunto: el SEO posiciona, la analítica mide y el soporte garantiza que no haya fricciones técnicas que interrumpan la compra.</p>
       </div>
 
-      <div class="price-block">
-        <h3>Retención mensual — post-lanzamiento</h3>
-        <table class="ptable">
-          <tbody>
-            <tr><td>Mantenimiento web y soporte técnico</td><td class="price">$500</td></tr>
-            <tr><td>Analytics + reporte ejecutivo mensual</td><td class="price">$300</td></tr>
-            <tr class="total"><td>Total mensual</td><td class="price">$800 USD/mes</td></tr>
-          </tbody>
-        </table>
-        <p class="pay-note">El SEO orgánico se cotiza por separado a partir del mes 4, cuando el canal digital ya tiene datos reales de comportamiento para definir una estrategia de keywords basada en lo que tus usuarios realmente buscan, no en suposiciones.</p>
+      <!-- web: tiles -->
+      <div class="no-print">
+        <div class="support-tiles">
+          <div class="stile"><h4>Soporte técnico</h4><div class="p">$300</div><p>Incidencias, ajustes de plataforma, apps y conectores, cambios menores. Respuesta 24–48h hábiles.</p></div>
+          <div class="stile"><h4>Analítica + reporte</h4><div class="p">$300</div><p>Reporte mensual: tráfico, conversión, catálogo, abandono de carrito y recomendación accionable.</p></div>
+          <div class="stile"><h4>SEO orgánico</h4><div class="p">$300</div><p>Keywords, auditoría técnica, 1–2 artículos, rankings, metadescripciones y reporte de posicionamiento.</p></div>
+        </div>
+        <div class="support-total"><span class="lbl">Total mensual</span><span class="amt">$900 USD/mes</span></div>
+        <div class="subnote">Los resultados del posicionamiento orgánico empiezan a verse desde el mes 3. Por eso los primeros 2 meses van incluidos en el desarrollo: para que llegues al mes 3 con tienda estable, posicionamiento en curso y datos reales.</div>
       </div>
 
-      <div class="price-block">
-        <h3>Costos operativos de plataforma — a cargo del cliente</h3>
-        <p class="pay-note" style="margin-top:0;margin-bottom:16px;">Independientes de los honorarios de consultoría y desarrollo. Quedan bajo control directo del cliente y se ajustan según el crecimiento del negocio.</p>
+      <!-- print: full table -->
+      <div class="print-only">
         <table class="ptable">
+          <thead><tr><th>Ítem</th><th style="text-align:right;">Precio</th><th>Incluye</th></tr></thead>
           <tbody>
-            <tr><td>Shopify plan estándar</td><td class="price">~$79 USD/mes</td></tr>
-            <tr><td>Conector Odoo-Shopify</td><td class="price">$50–150 USD/mes</td></tr>
-            <tr><td>Hosting Odoo (si aplica)</td><td class="price">Variable</td></tr>
-            <tr class="total"><td>Total estimado plataforma</td><td class="price">~$130–230 USD/mes</td></tr>
+            <tr><td>Soporte técnico</td><td class="price">$300/mes</td><td>Resolución de incidencias, ajustes de plataforma, actualizaciones de apps y conectores, cambios menores de configuración. Respuesta: 24–48h hábiles</td></tr>
+            <tr><td>Analítica y reporte ejecutivo</td><td class="price">$300/mes</td><td>Reporte mensual con análisis de tráfico, conversión, comportamiento de catálogo, abandono de carrito y recomendación accionable</td></tr>
+            <tr><td>SEO orgánico</td><td class="price">$300/mes</td><td>Investigación de keywords, auditoría técnica mensual, 1–2 artículos de contenido optimizado, seguimiento de rankings, optimización de metadescripciones y reporte de posicionamiento</td></tr>
+            <tr class="total"><td>Total mensual</td><td class="price">$900 USD/mes</td><td></td></tr>
           </tbody>
         </table>
+        <div class="subnote">Los resultados del posicionamiento orgánico empiezan a ser visibles a partir del tercer mes. Por eso los primeros 2 meses de seguimiento van incluidos en el desarrollo: para que llegues al mes 3 con una tienda estable, posicionamiento en curso y datos reales que justifican las decisiones siguientes.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COSTOS OPERATIVOS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">A cargo del cliente</span>
+        <h2>Costos de plataforma</h2>
+        <p class="sub">Independientes de los honorarios de consultoría y desarrollo. Quedan bajo control directo del cliente.</p>
+      </div>
+
+      <!-- web: callout -->
+      <div class="ops no-print">
+        <div class="ops-top"><span class="t">Subtotal base estimado (sin asistente)</span><span class="v">~$170–345/mes</span></div>
+        <div class="ops-grid">
+          <div class="oi"><span>Shopify plan estándar</span><b>~$79/mes</b></div>
+          <div class="oi"><span>Comisión por transacción</span><b>0.5–2% / venta</b></div>
+          <div class="oi"><span>Conector Odoo-Shopify</span><b>$35–100/mes</b></div>
+          <div class="oi"><span>Dominio</span><b>~$15–20/año</b></div>
+          <div class="oi"><span>Hosting Odoo (si cloud)</span><b>$50–150/mes</b></div>
+          <div class="oi"><span>Email corporativo</span><b>~$6–12/usuario</b></div>
+        </div>
+      </div>
+      <p class="phase-label no-print" style="margin-top:26px;">Asistente — según opción (se elige una o ninguna, no se suman)</p>
+      <div class="tiles no-print">
+        <div class="tile"><div class="tl">Opción A · Omnicanal</div><div class="big">$50–200</div><div class="tl-sub">USD/mes · plataforma</div></div>
+        <div class="tile"><div class="tl">Opción B · Chat IA</div><div class="big">$15–40</div><div class="tl-sub">USD/mes · hosting + IA</div></div>
+        <div class="tile"><div class="tl">Sin asistente</div><div class="big">—</div><div class="tl-sub">Sin costo adicional</div></div>
+      </div>
+
+      <!-- print: full tables -->
+      <div class="print-only">
+        <table class="ptable">
+          <thead><tr><th>Concepto</th><th style="text-align:right;">Costo estimado</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td>Shopify plan estándar</td><td class="price">~$79 USD/mes</td><td>Incluye SSL, PCI DSS, CDN y seguridad base</td></tr>
+            <tr><td>Comisión por transacción Shopify</td><td class="price">0.5–2% por venta</td><td>Por uso de pasarela externa; Shopify Payments no disponible en Venezuela</td></tr>
+            <tr><td>Conector Odoo-Shopify</td><td class="price">$35–100 USD/mes</td><td>Según solución elegida en discovery</td></tr>
+            <tr><td>Dominio</td><td class="price">~$15–20 USD/año</td><td>Si no lo tienen ya</td></tr>
+            <tr><td>Hosting Odoo (si cloud)</td><td class="price">$50–150 USD/mes</td><td>Si es on-premise, costo propio</td></tr>
+            <tr><td>Email corporativo</td><td class="price">~$6–12 USD/mes·usuario</td><td>Si no lo tienen ya</td></tr>
+            <tr class="total"><td>Subtotal base estimado</td><td class="price">~$170–345 USD/mes</td><td>Sin opciones de asistente</td></tr>
+          </tbody>
+        </table>
+        <table class="ptable"><caption>Asistente de atención — según opción elegida</caption>
+          <thead><tr><th>Opción</th><th style="text-align:right;">Costo operativo/mes</th></tr></thead>
+          <tbody>
+            <tr><td>Opción A · Automatización omnicanal</td><td class="price">$50–200 USD/mes (a cargo del cliente)</td></tr>
+            <tr><td>Opción B · Chat con IA integrado al catálogo</td><td class="price">$15–40 USD/mes (hosting + IA)</td></tr>
+            <tr><td>Sin asistente</td><td class="price">—</td></tr>
+          </tbody>
+        </table>
+        <p class="pay-note">Se elige una opción o ninguna. No se suman.</p>
       </div>
     </div>
   </section>
@@ -466,32 +797,45 @@ section{position:relative;}
         <span class="kicker">Cronograma</span>
         <h2>12 semanas al lanzamiento</h2>
       </div>
-      <div class="timeline">
-        <div class="tl-row">
-          <div class="tl-phase">Discovery y UX/UI</div>
-          <div class="tl-dur">Semanas 1–3</div>
-          <div class="tl-milestone">Prototipo aprobado</div>
+
+      <!-- web: timeline -->
+      <div class="no-print">
+        <p class="phase-label">Fase 1 — Ecommerce</p>
+        <div class="timeline">
+          <div class="tl-row"><div class="tl-phase">Discovery y UX/UI</div><div class="tl-dur">Semanas 1–3</div><div class="tl-milestone">Prototipo aprobado</div></div>
+          <div class="tl-row"><div class="tl-phase">Desarrollo core Shopify</div><div class="tl-dur">Semanas 4–8</div><div class="tl-milestone">Sitio en staging</div></div>
+          <div class="tl-row"><div class="tl-phase">Catálogo e integraciones</div><div class="tl-dur">Semanas 7–10</div><div class="tl-milestone">SKUs cargados, Odoo conectado</div></div>
+          <div class="tl-row"><div class="tl-phase">QA y ajustes</div><div class="tl-dur">Semanas 11–12</div><div class="tl-milestone">Sitio revisado y aprobado</div></div>
+          <div class="tl-row launch"><div class="tl-phase">Lanzamiento</div><div class="tl-dur">Semana 12</div><div class="tl-milestone">Alkosto online</div></div>
         </div>
-        <div class="tl-row">
-          <div class="tl-phase">Desarrollo core Shopify</div>
-          <div class="tl-dur">Semanas 4–8</div>
-          <div class="tl-milestone">Sitio en staging</div>
+        <p class="phase-label" style="margin-top:34px;">Fase 2 — Asistente (post-lanzamiento, si aplica)</p>
+        <div class="timeline">
+          <div class="tl-row"><div class="tl-phase">Opción A · Omnicanal</div><div class="tl-dur">Sem 13 · 2 sem</div><div class="tl-milestone">Workflows y canales activos</div></div>
+          <div class="tl-row"><div class="tl-phase">Opción B · Chat IA</div><div class="tl-dur">Sem 13 · 4 sem</div><div class="tl-milestone">Asistente conversacional activo</div></div>
         </div>
-        <div class="tl-row">
-          <div class="tl-phase">Catálogo e integraciones</div>
-          <div class="tl-dur">Semanas 7–10</div>
-          <div class="tl-milestone">SKUs cargados, Odoo y Cashea conectados</div>
-        </div>
-        <div class="tl-row">
-          <div class="tl-phase">QA y ajustes</div>
-          <div class="tl-dur">Semanas 11–12</div>
-          <div class="tl-milestone">Sitio revisado y aprobado</div>
-        </div>
-        <div class="tl-row launch">
-          <div class="tl-phase">Lanzamiento</div>
-          <div class="tl-dur">Semana 12</div>
-          <div class="tl-milestone">Alkosto online</div>
-        </div>
+        <div class="subnote">El asistente arranca tras el lanzamiento para garantizar tres condiciones: integración Shopify-Odoo validada, catálogo completo cargado y alcance técnico sin cambios pendientes. Así opera sobre datos reales desde el primer día.</div>
+      </div>
+
+      <!-- print: tables -->
+      <div class="print-only">
+        <table class="ptable"><caption>Fase 1 — Ecommerce (12 semanas al lanzamiento)</caption>
+          <thead><tr><th>Fase</th><th>Duración</th><th>Hito</th></tr></thead>
+          <tbody>
+            <tr><td>Discovery y UX/UI</td><td>Semanas 1–3</td><td>Prototipo aprobado</td></tr>
+            <tr><td>Desarrollo core Shopify</td><td>Semanas 4–8</td><td>Sitio en staging</td></tr>
+            <tr><td>Catálogo e integraciones</td><td>Semanas 7–10</td><td>SKUs cargados, Odoo conectado</td></tr>
+            <tr><td>QA y ajustes</td><td>Semanas 11–12</td><td>Sitio revisado y aprobado</td></tr>
+            <tr class="total"><td>Lanzamiento</td><td>Semana 12</td><td>Alkosto online</td></tr>
+          </tbody>
+        </table>
+        <table class="ptable"><caption>Fase 2 — Asistente de atención (post-lanzamiento, si aplica)</caption>
+          <thead><tr><th>Opción</th><th>Inicio</th><th>Duración</th><th>Hito</th></tr></thead>
+          <tbody>
+            <tr><td>Opción A · Automatización omnicanal</td><td>Semana 13</td><td>2 semanas</td><td>Workflows y canales activos</td></tr>
+            <tr><td>Opción B · Chat con IA integrado al catálogo</td><td>Semana 13</td><td>4 semanas</td><td>Asistente conversacional activo en el ecommerce</td></tr>
+          </tbody>
+        </table>
+        <div class="subnote">El desarrollo del asistente arranca después del lanzamiento para garantizar tres condiciones previas: integración Shopify-Odoo estable y validada, catálogo completo cargado en la plataforma, y alcance técnico definido sin cambios pendientes. Esto asegura que el asistente opere sobre datos reales desde el primer día.</div>
       </div>
     </div>
   </section>
@@ -499,10 +843,7 @@ section{position:relative;}
   <!-- POR QUÉ YO -->
   <section class="sec panel-dark">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">Por qué yo</span>
-        <h2>Un socio, no una agencia</h2>
-      </div>
+      <div class="sec-head"><span class="kicker">Por qué yo</span><h2>Un socio, no una agencia</h2></div>
       <p class="body-text">No soy una agencia con 500 clientes. Soy un Product Manager con más de <strong>8 años digitalizando negocios</strong> en ecommerce, marketplace y retail, con experiencia directa en integraciones de inventario, analítica de datos y automatización con IA.</p>
       <p class="body-text">Lo que ofrezco no es un sitio web terminado y entregado. Es un socio que entiende que el éxito del ecommerce de Alkosto se mide en <strong>pedidos completados y neveras despachadas</strong>, no en páginas diseñadas.</p>
       <p class="body-text">Durante el proceso tienes acceso directo a mí en todo momento, no a un account manager que transmite mensajes. Cada decisión técnica se explica en lenguaje de negocio antes de ejecutarse.</p>
@@ -512,10 +853,7 @@ section{position:relative;}
   <!-- PRÓXIMOS PASOS -->
   <section class="sec">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">Próximos pasos</span>
-        <h2>Cómo arrancamos</h2>
-      </div>
+      <div class="sec-head"><span class="kicker">Próximos pasos</span><h2>Cómo arrancamos</h2></div>
       <div class="steps">
         <div class="step"><span class="step-num"></span><p>Revisas esta propuesta con tu equipo.</p></div>
         <div class="step"><span class="step-num"></span><p>Coordinamos una sesión de 60 minutos para resolver dudas y ajustar alcance.</p></div>
@@ -550,12 +888,8 @@ section{position:relative;}
   var err = document.getElementById('gate-err');
   var inner = gate.querySelector('.gate-inner');
 
-  function unlock(){
-    document.body.classList.add('unlocked');
-    window.scrollTo(0,0);
-  }
+  function unlock(){ document.body.classList.add('unlocked'); window.scrollTo(0,0); }
 
-  // Already authenticated this session
   try{ if(sessionStorage.getItem(KEY) === '1'){ unlock(); } }catch(e){}
 
   form.addEventListener('submit', function(e){
@@ -567,9 +901,9 @@ section{position:relative;}
     }else{
       err.classList.add('show');
       inner.classList.remove('gate-shake');
-      void inner.offsetWidth; // reflow to restart animation
+      void inner.offsetWidth;
       inner.classList.add('gate-shake');
-      input.value = '';
+      input.value='';
       input.focus();
     }
   });
