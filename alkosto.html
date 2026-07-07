@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Propuesta Alkosto · Michael Muñoz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F1EB;
+  --ink:#0E0E0F;
+  --accent:#FF4A1A;
+  --muted:#4A463F;
+  --muted2:#6B665C;
+  --kicker:#9A958B;
+  --border:#D8D3C8;
+  --border-soft:#E2DDD2;
+  --dark:#0E0E0F;
+  --dark-border:#2E2E2E;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:'Archivo',sans-serif;line-height:1.6;overflow-x:hidden;}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--accent);color:#fff;}
+h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:-.01em;line-height:.94;}
+
+/* ---------- GATE ---------- */
+#gate{position:fixed;inset:0;z-index:1000;background:var(--dark);color:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px;}
+#gate .gate-inner{width:100%;max-width:420px;text-align:center;}
+#gate .gate-mark{font-family:'Anton';font-size:22px;letter-spacing:.02em;margin-bottom:40px;}
+#gate .gate-mark span{color:var(--accent);}
+#gate h2{font-size:clamp(34px,8vw,52px);line-height:.92;color:var(--bg);}
+#gate p{margin-top:16px;color:#A7A297;font-size:14px;font-weight:500;letter-spacing:.02em;}
+#gate .gate-lock{display:inline-flex;align-items:center;gap:8px;margin-bottom:26px;font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);}
+#gate form{margin-top:34px;display:flex;flex-direction:column;gap:14px;}
+#gate input{background:#151515;border:1px solid var(--dark-border);border-radius:8px;padding:15px 16px;color:var(--bg);font-family:'Archivo';font-size:16px;font-weight:500;outline:none;text-align:center;letter-spacing:.05em;transition:border-color .2s;}
+#gate input:focus{border-color:var(--accent);}
+#gate button{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:15px;font-family:'Archivo';font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+#gate button:hover{opacity:.88;}
+#gate .gate-err{min-height:18px;margin-top:2px;font-size:13px;font-weight:600;color:#FF6A45;opacity:0;transition:opacity .2s;}
+#gate .gate-err.show{opacity:1;}
+.gate-shake{animation:shake .38s;}
+@keyframes shake{0%,100%{transform:translateX(0);}20%,60%{transform:translateX(-8px);}40%,80%{transform:translateX(8px);}}
+
+/* ---------- APP (revealed) ---------- */
+#app{display:none;}
+body.unlocked{overflow-x:hidden;}
+body.unlocked #gate{display:none;}
+body.unlocked #app{display:block;animation:fadeIn .6s ease;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ---------- TOP BAR ---------- */
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px clamp(20px,4vw,64px);background:rgba(244,241,235,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-soft);}
+.topbar .mark{font-family:'Anton';font-size:19px;letter-spacing:.02em;}
+.topbar .mark span{color:var(--accent);}
+.btn-download{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--bg);border:none;border-radius:100px;padding:11px 20px;font-family:'Archivo';font-size:13px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background .2s,transform .2s;}
+.btn-download:hover{background:var(--accent);transform:translateY(-1px);}
+.btn-download svg{width:15px;height:15px;}
+
+/* ---------- LAYOUT ---------- */
+.wrap{max-width:920px;margin:0 auto;padding:0 clamp(20px,5vw,40px);}
+section{position:relative;}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--kicker);}
+.kicker::before{content:"";width:9px;height:9px;background:var(--accent);display:inline-block;}
+.confid-pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--accent);color:var(--accent);border-radius:100px;padding:6px 14px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;}
+
+/* HERO */
+.hero{background:var(--dark);color:var(--bg);padding:clamp(64px,10vw,120px) 0 clamp(56px,8vw,96px);}
+.hero .wrap>*+*{margin-top:22px;}
+.hero .eyebrow{color:#A7A297;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.hero h1{color:var(--bg);font-size:clamp(48px,10vw,104px);line-height:.9;}
+.hero h1 .accent{color:var(--accent);}
+.hero .sub{color:#CFC9BE;font-size:clamp(17px,2vw,21px);font-weight:500;max-width:38ch;line-height:1.5;}
+.hero .meta{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin-top:34px;font-size:13px;font-weight:600;color:#9A958B;letter-spacing:.02em;}
+
+/* GENERIC SECTION */
+.sec{padding:clamp(56px,8vw,104px) 0;}
+.sec--alt{background:#EFEBE2;}
+.sec-head{margin-bottom:clamp(28px,4vw,44px);}
+.sec-head h2{font-size:clamp(38px,6vw,74px);margin-top:18px;}
+.lead{font-size:clamp(20px,2.4vw,28px);font-weight:700;line-height:1.32;letter-spacing:-.01em;color:#15140F;max-width:30ch;}
+.body-text{font-size:clamp(16px,1.5vw,18px);line-height:1.68;color:var(--muted);}
+.body-text+.body-text{margin-top:20px;}
+.body-text strong{color:var(--ink);font-weight:700;}
+.hl{color:var(--ink);font-weight:700;box-shadow:inset 0 -.5em 0 rgba(255,74,26,.14);}
+
+/* BUILD CARDS */
+.build-item{border-top:1px solid var(--border);padding:clamp(34px,5vw,52px) 0;}
+.build-item:last-child{border-bottom:1px solid var(--border);}
+.build-head{display:flex;gap:clamp(18px,3vw,34px);align-items:baseline;}
+.build-num{font-family:'Anton';font-size:clamp(38px,6vw,74px);color:var(--accent);line-height:.8;flex:0 0 auto;}
+.build-title{font-family:'Anton';font-size:clamp(26px,3.6vw,44px);line-height:.98;letter-spacing:-.01em;}
+.build-body{margin-top:22px;padding-left:0;}
+@media(min-width:720px){.build-body{padding-left:calc(clamp(38px,6vw,74px) + clamp(18px,3vw,34px));}}
+.entregables-label{margin-top:30px;font-size:11.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--kicker);margin-bottom:16px;}
+.checklist{list-style:none;display:grid;gap:11px;}
+.checklist li{position:relative;padding-left:30px;font-size:15.5px;line-height:1.5;color:var(--muted);}
+.checklist li::before{content:"";position:absolute;left:4px;top:9px;width:8px;height:8px;background:var(--accent);}
+.checklist li code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#E7E2D8;padding:2px 7px;border-radius:5px;color:#3A372F;}
+
+/* PRICING */
+.price-block{margin-top:clamp(30px,4vw,48px);}
+.price-block h3{font-family:'Anton';font-size:clamp(20px,2.4vw,28px);color:var(--ink);margin-bottom:18px;}
+.ptable{width:100%;border-collapse:collapse;font-size:15.5px;}
+.ptable td{padding:15px 4px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top;}
+.ptable td.price{text-align:right;white-space:nowrap;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;}
+.ptable tr.total td{border-bottom:none;border-top:2px solid var(--ink);padding-top:18px;font-family:'Anton';font-size:clamp(18px,2vw,22px);color:var(--ink);letter-spacing:.01em;}
+.ptable tr.total td.price{color:var(--accent);}
+.pay-note{margin-top:18px;font-size:14px;color:var(--muted2);font-weight:500;}
+.pay-note strong{color:var(--ink);font-weight:700;}
+
+/* TIMELINE */
+.timeline{display:grid;gap:0;margin-top:clamp(28px,4vw,44px);}
+.tl-row{display:grid;grid-template-columns:1fr;gap:6px;padding:22px 0;border-bottom:1px solid var(--border);}
+@media(min-width:640px){.tl-row{grid-template-columns:1.4fr .8fr 1.4fr;gap:20px;align-items:baseline;}}
+.tl-phase{font-family:'Anton';font-size:clamp(19px,2.2vw,26px);line-height:1;}
+.tl-dur{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--kicker);}
+.tl-milestone{font-size:15px;color:var(--muted);}
+.tl-milestone::before{content:"→ ";color:var(--accent);font-weight:700;}
+.tl-row.launch .tl-phase{color:var(--accent);}
+
+/* DARK PANEL (por qué yo) */
+.panel-dark{background:var(--dark);color:var(--bg);}
+.panel-dark .sec-head h2{color:var(--bg);}
+.panel-dark .body-text{color:#CFC9BE;}
+.panel-dark .body-text strong{color:#fff;}
+.panel-dark .kicker{color:#8C877D;}
+
+/* STEPS */
+.steps{counter-reset:step;display:grid;gap:2px;margin-top:clamp(28px,4vw,40px);}
+.step{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--border);}
+.step:last-child{border-bottom:none;}
+.step-num{counter-increment:step;font-family:'Anton';font-size:26px;color:var(--accent);line-height:1;flex:0 0 auto;min-width:34px;}
+.step-num::before{content:counter(step);}
+.step p{font-size:clamp(16px,1.7vw,19px);color:var(--ink);font-weight:500;line-height:1.5;}
+
+/* FOOTER */
+.foot{background:var(--dark);color:var(--bg);padding:clamp(48px,7vw,80px) 0 44px;}
+.foot .name{font-family:'Anton';font-size:clamp(30px,5vw,54px);color:var(--bg);}
+.foot .role{margin-top:8px;color:#A7A297;font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+.foot .contact{margin-top:30px;display:grid;gap:10px;font-size:15px;color:#CFC9BE;}
+.foot .contact a{color:#CFC9BE;transition:color .2s;}
+.foot .contact a:hover{color:var(--accent);}
+.foot .contact .lbl{color:#7A756B;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:11px;margin-right:8px;}
+.foot .fine{margin-top:36px;padding-top:22px;border-top:1px solid var(--dark-border);font-size:12px;color:#7A756B;letter-spacing:.04em;}
+
+.print-doc-head{display:none;}
+
+/* ================= PRINT / PDF (versión adaptada) ================= */
+@media print{
+  @page{size:A4;margin:16mm 15mm;}
+  html,body{background:#fff!important;color:#000!important;font-size:11pt;line-height:1.5;}
+  #gate,.topbar,.btn-download{display:none!important;}
+  #app{display:block!important;}
+  body.unlocked #app{animation:none!important;}
+  .wrap{max-width:none;padding:0;margin:0;}
+  section,.sec,.hero,.panel-dark,.sec--alt,.foot{background:#fff!important;color:#000!important;padding:0!important;}
+  h1,h2,h3{color:#000!important;}
+
+  /* Document header */
+  .hero{display:none!important;}
+  .print-doc-head{display:block!important;border-bottom:2pt solid #000;padding-bottom:10pt;margin-bottom:20pt;}
+  .print-doc-head .pd-title{font-family:'Anton';font-size:22pt;line-height:1;}
+  .print-doc-head .pd-sub{font-size:10pt;font-weight:700;color:#000;margin-top:6pt;letter-spacing:.02em;}
+  .print-doc-head .pd-confid{font-size:8pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#666;margin-top:4pt;}
+
+  .sec{padding:0!important;margin-bottom:16pt!important;}
+  .sec-head{margin-bottom:10pt!important;}
+  .sec-head h2{font-size:16pt!important;margin-top:4pt!important;border-bottom:1pt solid #ccc;padding-bottom:4pt;}
+  .kicker{color:#000!important;font-size:8pt;}
+  .kicker::before{background:#000!important;width:7px;height:7px;}
+  .lead{font-size:12.5pt!important;max-width:none;color:#000!important;}
+  .body-text{font-size:10.5pt!important;color:#111!important;}
+  .body-text strong,.hl{color:#000!important;box-shadow:none!important;font-weight:700;}
+
+  /* Keep blocks intact across page breaks */
+  .build-item,.price-block,.tl-row,.step,table,tr,.sec-head{page-break-inside:avoid;}
+  h2,h3{page-break-after:avoid;}
+
+  .build-item{border-top:1pt solid #ccc!important;padding:10pt 0!important;}
+  .build-item:last-child{border-bottom:1pt solid #ccc!important;}
+  .build-head{gap:10pt;}
+  .build-num{font-size:16pt!important;color:#000!important;}
+  .build-title{font-size:14pt!important;}
+  .build-body{padding-left:26pt!important;margin-top:8pt!important;}
+  .entregables-label{color:#666!important;font-size:8pt!important;margin-top:12pt!important;}
+  .checklist li{color:#111!important;font-size:10pt!important;padding-left:16pt;}
+  .checklist li::before{background:#000!important;width:5px;height:5px;top:7px;}
+  .checklist li code{background:#eee!important;}
+
+  /* Inversión */
+  #inversion{page-break-before:always;}
+  .price-block h3{font-size:13pt!important;color:#000!important;}
+  .ptable{font-size:10pt!important;}
+  .ptable td{padding:6pt 4pt!important;border-bottom:.5pt solid #bbb!important;color:#111!important;}
+  .ptable td.price{color:#000!important;}
+  .ptable tr.total td{border-top:1.5pt solid #000!important;font-size:12pt!important;color:#000!important;}
+  .ptable tr.total td.price{color:#000!important;}
+  .pay-note{font-size:9.5pt!important;color:#333!important;}
+
+  /* Cronograma */
+  .timeline{margin-top:8pt!important;}
+  .tl-row{grid-template-columns:1.4fr .8fr 1.4fr!important;gap:12pt!important;padding:7pt 0!important;border-bottom:.5pt solid #bbb!important;}
+  .tl-phase{font-size:12pt!important;color:#000!important;}
+  .tl-dur{color:#555!important;font-size:8.5pt!important;}
+  .tl-milestone{font-size:9.5pt!important;color:#111!important;}
+  .tl-milestone::before{color:#000!important;}
+
+  /* Steps */
+  .step{padding:7pt 0!important;border-bottom:.5pt solid #bbb!important;}
+  .step-num{font-size:14pt!important;color:#000!important;}
+  .step p{font-size:10.5pt!important;color:#000!important;}
+
+  /* Footer */
+  .foot{border-top:2pt solid #000;padding-top:12pt!important;margin-top:16pt!important;page-break-inside:avoid;}
+  .foot .name{font-size:16pt!important;color:#000!important;}
+  .foot .role{color:#333!important;}
+  .foot .contact{color:#111!important;font-size:9.5pt!important;}
+  .foot .contact a,.foot .contact .lbl{color:#111!important;}
+  .foot .fine{color:#666!important;border-top:.5pt solid #ccc;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ GATE ============ -->
+<div id="gate">
+  <div class="gate-inner">
+    <div class="gate-mark">MICHAEL<span>.</span></div>
+    <div class="gate-lock">● Acceso restringido</div>
+    <h2>Propuesta<br>Alkosto</h2>
+    <p>Este documento es confidencial.<br>Introduce la clave de acceso para continuar.</p>
+    <form id="gate-form" autocomplete="off">
+      <input id="gate-input" type="password" placeholder="Clave de acceso" aria-label="Clave de acceso" autofocus>
+      <div class="gate-err" id="gate-err">Clave incorrecta. Inténtalo de nuevo.</div>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="mark">MICHAEL<span>.</span></div>
+    <button class="btn-download" onclick="window.print()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+      Descargar PDF
+    </button>
+  </div>
+
+  <!-- Print-only document header -->
+  <div class="print-doc-head wrap">
+    <div class="pd-title">Propuesta Digital — Alkosto E-Commerce</div>
+    <div class="pd-sub">Michael Muñoz — Product Manager &amp; Digital Consultant</div>
+    <div class="pd-confid">Confidencial · Acceso restringido</div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Propuesta Digital · E-Commerce</div>
+      <h1><span class="accent">Alkosto</span><br>online.</h1>
+      <p class="sub">La digitalización de tu operación omnicanal — no un sitio web, un motor de entrega.</p>
+      <div class="meta">
+        <span class="confid-pill">● Confidencial</span>
+        <span>Michael Muñoz · Product Manager &amp; Digital Consultant</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- EL MOMENTO -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">El momento</span>
+      </div>
+      <p class="lead">Alkosto tiene lo que la mayoría de competidores digitales no pueden comprar.</p>
+      <p class="body-text" style="margin-top:26px;">Una red física establecida, un catálogo de <strong>1,200 productos</strong> y la confianza construida en años de operación presencial. El ecommerce no reemplaza eso. <span class="hl">Lo amplifica.</span></p>
+      <p class="body-text">Esta propuesta no es un sitio web. Es la digitalización de una operación omnicanal que convierte tus sucursales de <strong>Las Mercedes</strong> y <strong>Chacao</strong> en el motor de entrega más rápido y confiable del mercado venezolano para electrodomésticos premium.</p>
+    </div>
+  </section>
+
+  <!-- QUÉ VOY A CONSTRUIR -->
+  <section class="sec sec--alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">El alcance</span>
+        <h2>Qué voy a construir</h2>
+      </div>
+
+      <!-- 1 -->
+      <div class="build-item">
+        <div class="build-head">
+          <span class="build-num">01</span>
+          <h3 class="build-title">Estrategia y UX/UI personalizada</h3>
+        </div>
+        <div class="build-body">
+          <p class="body-text">Antes de diseñar una sola pantalla, documentamos juntos las respuestas a las preguntas que determinan si el ecommerce funciona o no: cómo está estructurado el inventario hoy, en qué etapa está Odoo, qué métodos de pago ya usan, qué significa éxito al final del primer año.</p>
+          <p class="body-text">El resultado es un <strong>prototipo navegable de alta fidelidad</strong> que puedes mostrar a tu equipo antes de escribir una línea de código. Cada decisión de UX está justificada en comportamiento de usuario real para la categoría de electrodomésticos, no en preferencias estéticas.</p>
+          <div class="entregables-label">Entregables</div>
+          <ul class="checklist">
+            <li>Sesión de discovery documentada (formulario + acta)</li>
+            <li>Prototipo interactivo con todos los flujos principales</li>
+            <li>Sistema de diseño con identidad Alkosto aplicada</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="build-item">
+        <div class="build-head">
+          <span class="build-num">02</span>
+          <h3 class="build-title">Desarrollo Shopify + integración Odoo</h3>
+        </div>
+        <div class="build-body">
+          <p class="body-text">La plataforma recomendada es <strong>Shopify</strong> como front-end de la tienda, integrada con <strong>Odoo</strong> como back-office. Esta combinación ofrece lo mejor de los dos mundos: el checkout más optimizado para conversión del mercado, velocidad y confiabilidad de clase mundial del lado de Shopify, y la gestión de inventario multi-sucursal, facturación y operaciones del lado de Odoo.</p>
+          <p class="body-text">La integración entre ambos sistemas es <span class="hl">la pieza más crítica del proyecto</span>. No es "conectar dos herramientas": es garantizar que cuando una lavadora se vende en el ecommerce, el stock de Las Mercedes y Chacao se actualiza en tiempo real, la factura se genera automáticamente en Odoo y el pedido queda registrado sin intervención manual. Esto elimina el riesgo de vender un producto sin stock y reduce la carga operativa del equipo de tienda.</p>
+          <div class="entregables-label">Entregables</div>
+          <ul class="checklist">
+            <li>Home, categorías, ficha de producto, carrito y checkout completo</li>
+            <li>Disponibilidad de stock en tiempo real por sucursal</li>
+            <li>Click &amp; collect: el cliente elige retirar en Las Mercedes o Chacao</li>
+            <li>Precios en USD con equivalencia en Bs. a tasa BCV del día</li>
+            <li>Integración Cashea desde el día de lanzamiento</li>
+            <li>Checkout con Pago Móvil, Zelle, transferencia bancaria y tarjeta internacional</li>
+            <li>Botón de rescate WhatsApp en carrito y checkout</li>
+            <li>Responsive optimizado mobile-first</li>
+            <li>Integración Odoo (inventario, pedidos, facturación)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="build-item">
+        <div class="build-head">
+          <span class="build-num">03</span>
+          <h3 class="build-title">Catálogo de 1,200 SKUs optimizado a SEO</h3>
+        </div>
+        <div class="build-body">
+          <p class="body-text">Cada ficha de producto no es solo una descripción: es un <strong>activo de búsqueda orgánica</strong>. Para electrodomésticos en Venezuela eso significa incluir los argumentos de venta que el mercado local necesita: tecnología Inverter para protección de voltaje, capacidad en metros cuadrados para aires acondicionados, voltaje compatible con la red venezolana.</p>
+          <div class="entregables-label">Entregables</div>
+          <ul class="checklist">
+            <li>Descripción única optimizada para SEO por cada SKU</li>
+            <li>Especificaciones técnicas estructuradas y consistentes</li>
+            <li>Atributos filtrables (marca, tipo, voltaje, capacidad)</li>
+            <li>URLs limpias con keywords: <code>/neveras/lg/nevera-no-frost-inverter-400l</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="build-item">
+        <div class="build-head">
+          <span class="build-num">04</span>
+          <h3 class="build-title">Integración Cashea</h3>
+        </div>
+        <div class="build-body">
+          <p class="body-text">Cashea no es opcional en este mercado. Es <span class="hl">el diferenciador de conversión más inmediato</span> disponible hoy en Venezuela para electrodomésticos de ticket alto. Daka, Damasco y SoyTechno ya lo tienen. No tenerlo en el lanzamiento es perder ventas desde el día uno.</p>
+          <p class="body-text">La integración incluye la presentación de opciones de cuotas directamente en la ficha de producto y en el checkout, con el flujo completo de aprobación dentro de la misma experiencia de compra.</p>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="build-item">
+        <div class="build-head">
+          <span class="build-num">05</span>
+          <h3 class="build-title">Analytics: setup y seguimiento mensual</h3>
+        </div>
+        <div class="build-body">
+          <p class="body-text"><strong>Setup inicial incluido en el desarrollo:</strong></p>
+          <ul class="checklist" style="margin-top:14px;">
+            <li>GA4 con ecommerce enhanced (eventos de producto, embudos de checkout, conversiones por método de pago)</li>
+            <li>Google Search Console vinculada</li>
+            <li>Looker Studio dashboard con métricas clave del negocio</li>
+            <li>Segmentación por sucursal y por categoría de producto</li>
+          </ul>
+          <p class="body-text" style="margin-top:24px;"><strong>Reporte ejecutivo mensual incluido en la retención:</strong> cada mes recibes un documento de una página con los números que importan y lo que significan para el negocio, no solo una captura de pantalla de GA4:</p>
+          <ul class="checklist" style="margin-top:14px;">
+            <li>Tráfico total y por canal (orgánico, redes, directo)</li>
+            <li>Tasa de conversión general y por categoría</li>
+            <li>Productos más vistos vs. más comprados (gap de conversión)</li>
+            <li>Abandono de carrito por paso del checkout</li>
+            <li>Revenue por método de pago (peso de Cashea vs. Zelle vs. Pago Móvil)</li>
+            <li>Comportamiento click &amp; collect vs. envío a domicilio</li>
+          </ul>
+          <p class="body-text" style="margin-top:20px;">Esto convierte los datos en decisiones: qué producto necesita mejor ficha, en qué paso del checkout hay fricción, qué método de pago hay que promover más.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVERSIÓN -->
+  <section class="sec" id="inversion">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Inversión</span>
+        <h2>Números claros</h2>
+      </div>
+
+      <div class="price-block">
+        <h3>Desarrollo — pago único</h3>
+        <table class="ptable">
+          <tbody>
+            <tr><td>Estrategia, discovery y UX/UI personalizada</td><td class="price">$1,900</td></tr>
+            <tr><td>Desarrollo Shopify + integración Odoo</td><td class="price">$3,200</td></tr>
+            <tr><td>Catálogo 1,200 SKUs con copywriting SEO</td><td class="price">$2,400</td></tr>
+            <tr><td>Integración Cashea</td><td class="price">$400</td></tr>
+            <tr><td>Setup GA4 + Looker Studio dashboard</td><td class="price">$350</td></tr>
+            <tr class="total"><td>Total desarrollo</td><td class="price">$8,250 USD</td></tr>
+          </tbody>
+        </table>
+        <p class="pay-note"><strong>Esquema de pago:</strong> 50% al inicio · 25% en semana 6 · 25% al lanzamiento.</p>
+      </div>
+
+      <div class="price-block">
+        <h3>Retención mensual — post-lanzamiento</h3>
+        <table class="ptable">
+          <tbody>
+            <tr><td>Mantenimiento web y soporte técnico</td><td class="price">$500</td></tr>
+            <tr><td>Analytics + reporte ejecutivo mensual</td><td class="price">$300</td></tr>
+            <tr class="total"><td>Total mensual</td><td class="price">$800 USD/mes</td></tr>
+          </tbody>
+        </table>
+        <p class="pay-note">El SEO orgánico se cotiza por separado a partir del mes 4, cuando el canal digital ya tiene datos reales de comportamiento para definir una estrategia de keywords basada en lo que tus usuarios realmente buscan, no en suposiciones.</p>
+      </div>
+
+      <div class="price-block">
+        <h3>Costos operativos de plataforma — a cargo del cliente</h3>
+        <p class="pay-note" style="margin-top:0;margin-bottom:16px;">Independientes de los honorarios de consultoría y desarrollo. Quedan bajo control directo del cliente y se ajustan según el crecimiento del negocio.</p>
+        <table class="ptable">
+          <tbody>
+            <tr><td>Shopify plan estándar</td><td class="price">~$79 USD/mes</td></tr>
+            <tr><td>Conector Odoo-Shopify</td><td class="price">$50–150 USD/mes</td></tr>
+            <tr><td>Hosting Odoo (si aplica)</td><td class="price">Variable</td></tr>
+            <tr class="total"><td>Total estimado plataforma</td><td class="price">~$130–230 USD/mes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRONOGRAMA -->
+  <section class="sec sec--alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Cronograma</span>
+        <h2>12 semanas al lanzamiento</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-row">
+          <div class="tl-phase">Discovery y UX/UI</div>
+          <div class="tl-dur">Semanas 1–3</div>
+          <div class="tl-milestone">Prototipo aprobado</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-phase">Desarrollo core Shopify</div>
+          <div class="tl-dur">Semanas 4–8</div>
+          <div class="tl-milestone">Sitio en staging</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-phase">Catálogo e integraciones</div>
+          <div class="tl-dur">Semanas 7–10</div>
+          <div class="tl-milestone">SKUs cargados, Odoo y Cashea conectados</div>
+        </div>
+        <div class="tl-row">
+          <div class="tl-phase">QA y ajustes</div>
+          <div class="tl-dur">Semanas 11–12</div>
+          <div class="tl-milestone">Sitio revisado y aprobado</div>
+        </div>
+        <div class="tl-row launch">
+          <div class="tl-phase">Lanzamiento</div>
+          <div class="tl-dur">Semana 12</div>
+          <div class="tl-milestone">Alkosto online</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ YO -->
+  <section class="sec panel-dark">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Por qué yo</span>
+        <h2>Un socio, no una agencia</h2>
+      </div>
+      <p class="body-text">No soy una agencia con 500 clientes. Soy un Product Manager con más de <strong>8 años digitalizando negocios</strong> en ecommerce, marketplace y retail, con experiencia directa en integraciones de inventario, analítica de datos y automatización con IA.</p>
+      <p class="body-text">Lo que ofrezco no es un sitio web terminado y entregado. Es un socio que entiende que el éxito del ecommerce de Alkosto se mide en <strong>pedidos completados y neveras despachadas</strong>, no en páginas diseñadas.</p>
+      <p class="body-text">Durante el proceso tienes acceso directo a mí en todo momento, no a un account manager que transmite mensajes. Cada decisión técnica se explica en lenguaje de negocio antes de ejecutarse.</p>
+    </div>
+  </section>
+
+  <!-- PRÓXIMOS PASOS -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Próximos pasos</span>
+        <h2>Cómo arrancamos</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-num"></span><p>Revisas esta propuesta con tu equipo.</p></div>
+        <div class="step"><span class="step-num"></span><p>Coordinamos una sesión de 60 minutos para resolver dudas y ajustar alcance.</p></div>
+        <div class="step"><span class="step-num"></span><p>Con el acuerdo firmado, arrancamos el discovery en la semana siguiente.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="name">Michael Muñoz</div>
+      <div class="role">Product Manager &amp; Digital Consultant</div>
+      <div class="contact">
+        <div><span class="lbl">Email</span><a href="mailto:info@michaelmunoz.co">info@michaelmunoz.co</a></div>
+        <div><span class="lbl">WhatsApp</span><a href="https://wa.me/34685601974" target="_blank" rel="noopener">+34 685 601 974</a></div>
+        <div><span class="lbl">LinkedIn</span><a href="https://linkedin.com/in/michaelcwd" target="_blank" rel="noopener">linkedin.com/in/michaelcwd</a></div>
+      </div>
+      <div class="fine">Documento confidencial preparado para Alkosto · Michael Muñoz · 2026</div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var PASS = "Alkosto202!";
+  var KEY = "alkosto_auth";
+  var gate = document.getElementById('gate');
+  var form = document.getElementById('gate-form');
+  var input = document.getElementById('gate-input');
+  var err = document.getElementById('gate-err');
+  var inner = gate.querySelector('.gate-inner');
+
+  function unlock(){
+    document.body.classList.add('unlocked');
+    window.scrollTo(0,0);
+  }
+
+  // Already authenticated this session
+  try{ if(sessionStorage.getItem(KEY) === '1'){ unlock(); } }catch(e){}
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(input.value === PASS){
+      try{ sessionStorage.setItem(KEY,'1'); }catch(e){}
+      err.classList.remove('show');
+      unlock();
+    }else{
+      err.classList.add('show');
+      inner.classList.remove('gate-shake');
+      void inner.offsetWidth; // reflow to restart animation
+      inner.classList.add('gate-shake');
+      input.value = '';
+      input.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>
